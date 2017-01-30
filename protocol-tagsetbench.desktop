@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Měření k diplomce
+Exec=/home/Git/magic-links/my-uri-handler.py %u
+Icon=tagsetbench-icon
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/tagsetbench;

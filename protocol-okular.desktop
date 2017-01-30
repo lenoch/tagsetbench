@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Okular
+Exec=/home/Git/magic-links/my-uri-handler.py %u
+Icon=okular-icon
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/okular;

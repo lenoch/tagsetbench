@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Zařadit do fronty spooleru (v /home/Git; anebo podle parametru ?spool=DIR)
+Exec=/home/Git/magic-links/my-uri-handler.py %u
+Icon=spooler-icon
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/enqueue;

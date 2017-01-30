@@ -1,0 +1,1 @@
+3rdparty/rftagger/original_wordclass.txt

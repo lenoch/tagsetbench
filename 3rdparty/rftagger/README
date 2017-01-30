@@ -1,0 +1,122 @@
+
+This package contains the RFTagger which is freely available for
+academic research and education. The technical details of the RFTagger
+are documentated in the COLING08 paper available in the doc directory.
+
+Tagger Usage
+============
+
+On Linux systems, you can annotate data with the shell scripts in the
+cmd directory. Here is an example:
+
+> cmd/rftagger-german test/german.txt
+
+These scripts also comprise a tokeniser which converts the input into
+1-word-perl-line format.
+
+On other systems than Linux, you have to compile the tagger first (see
+below) and you have to tokenise the input yourself. The parameter files
+will only work on Intel x86 or compatible processors.
+
+Compilation and installation of the source code
+===============================================
+
+1. Move to the src directory
+   > cd src
+2. Compile the tagger
+   > make
+3. Leave the source directory and make a test
+   > cd ..
+   > src/rft-annotate lib/german.par test/tokgerman.txt
+4. You can install the tagger in /usr/local/bin using the command
+   > make install
+   (Modify the PREFIX variable in the Makefile in order to choose
+    a different installation directory.)
+5. To install the man pages use the command
+   > make maninstall
+
+This package contains parameter files for German, Czech, Slovene, 
+Hungarian and Russian. All parameter files use UTF8 encoding.
+
+The German parameter file was trained on the Tiger2 treebank. 
+(http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/tiger.html)
+
+The Czech parameter file was trained on the Czech Academic Corpus 1.0
+(http://ufal.mff.cuni.cz/rest/CAC/cac_10.html).
+
+The Hungarian parameter file was trained on the Szeged treebank 2.0
+(http://www.inf.u-szeged.hu/projectdirs/hlt/).
+
+The Slovene parameter file was trained on the JOS corpus
+(http://nl.ijs.si/jos/index-en.html). This corpus is described in the
+following publication:
+Toma. Erjavec, Darja Fi.er, Simon Krek, Nina Ledinek: The JOS
+Linguistically Tagged Corpus of Slovene. Proceedings of the Seventh
+International Conference on Language Resources and Evaluation
+(LREC'10), Malta, 2010.
+
+The Slovak parameter file was trained on the Slovak National Corpus.
+(http://korpus.juls.savba.sk/).
+
+The Russian parameter file was trained on the corpus
+i-ru-sample.txt.gz which was kindly provided by Serge Sharoff.
+
+
+Tagger Training
+===============
+
+The tagger can be trained on new data using the program rft-train.
+The minimal requirement for the tagger training is a manually annotated
+training corpus and a wordclass automaton. You can use the automaton
+stored in wordclass/wordclass.txt for this purpose or create your own
+automaton as explained in wordnet/README. The file formats and the
+available options are documented in the manpages of rft-train.
+
+Tagset Design
+-------------
+
+The RFTagger treats the POS tags as ATTRIBUTE vectors rather than
+atomic symbols. The period symbol is used as an attribute
+separator. Thus, the POS tag ART.Indef.Nom.Sg.Masc is an article (ART)
+with the attributes "Indef", "Nom", "Sg", and "Masc". The number of
+attributes must be the same for all POS tags with the same initial
+feature (= BASE CATEGORY such as ART in the example). Otherwise the
+tagger will report an error. All attributes appearing at a certain
+position after some base category (such as ART) implicitly form a
+FEATURE whose possible values are the attributes.
+
+Consider the following POS tags which include a problematic element:
+
+ART.Indef.Nom.Sg.Masc
+ART.Def.Acc.Sg.Masc
+ART.Def.Dat.Pl.Fem
+ART.Acc.Sg.Neut.Def
+
+The possible values of the different features of wordclass ART are:
+
+Feature 1: Indef, Def, Acc
+Feature 2: Nom, Acc, Dat, Sg
+Feature 3: Sg, Pl, Neut
+Feature 4: Masc, Fem, Def
+
+Conclusion: Make sure that the order of the attributes is correct
+because the tagger is unable to detect mistakes other than a varying
+number of attributes for a given base category.
+
+Here is another example:
+
+V.Inf
+V.Part.Past
+V.Fin.3.Sg.Pres.Ind
+
+The tagger will not accept these tags because the number of attributes
+of the base category V varies. Replace these tags with
+
+VInf
+VPart.Past
+VFin.3.Sg.Pres.Ind
+
+to avoid these problems.
+
+----------------------------------------------------------
+Please send questions, suggestions and bug reports to schmid@ims.uni-stuttgart.de

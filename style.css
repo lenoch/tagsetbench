@@ -1,0 +1,163 @@
+body {
+	margin: 0;
+	background: #333;
+}
+
+div#content {
+	max-width: 1200px;
+	overflow-x: scroll;
+	min-width: 500px;
+	margin: 1em auto 0 auto;
+	padding: 1em;
+	background: #eee;
+	color: #333;
+	font-family: Cantarell, sans-serif;
+	font-size: 11pt;
+}
+
+h1 {
+	font-size: 16pt;
+}
+
+h2 {
+	font-size: 13pt; clear: both
+}
+
+a {
+	color: #d26252;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #b22222; /* brick red */
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+nav li {
+	display: inline;
+	margin-right: 10px;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+nav li:before {
+	content: '‹';
+}
+
+nav li:after {
+	content: '›';
+}
+
+dt {
+	font-weight: bold;
+}
+
+ul {
+	list-style: square;
+}
+
+@font-face {
+	font-family: Cantarell;
+	src: url('cantarell.otf');
+}
+
+@font-face {
+	font-family: 'Cantarell';
+	src: url('cantarell-bold.otf');
+	font-weight: bold;
+}
+
+th {
+    vertical-align: top;
+}
+
+a {
+    cursor: pointer;
+}
+
+th span {
+    font-weight: normal;
+}
+
+/* marking of unknown words */
+
+/* unknown-word */
+.unknown-word:after, .uw:after {
+    content: '❓';
+}
+
+/* known-word-unknown-tag */
+.known-word-unknown-tag:after, .kwut:after {
+    content: '💡';
+}
+
+/* http://stackoverflow.com/questions/3880248/html-how-to-style-each-table-cell-in-a-column-via-css */
+.tagging-errors-overview td {
+    text-align: right;
+}
+
+.tagging-errors-overview td:first-child {
+    text-align: left !important;
+}
+
+.lowest, .lower, .low {
+    color: #484;
+    font-weight: bold;
+}
+
+.highest, .higher, .high {
+    color: #a22;
+    font-weight: bold;
+}
+
+#compared-parts td {
+    text-align: right;
+}
+
+#compared-parts td:first-child + td {
+    text-align: left !important;
+}
+
+
+
+[title] {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+
+code, pre {
+	background: #ddd;
+}
+
+pre {
+	margin: 0; margin-top: 0.1em; margin-bottom: 0.1em;
+}
+
+.positive {
+	color: #494;
+	font-weight: bold;
+}
+
+.neutral {
+	color: #228;
+	font-weight: bold;
+}
+
+.negative {
+	color: #b33;
+	font-weight: bold;
+}
+
+:target {
+	background-color: yellow;
+}
+
+:target:before {
+	content: '⇒ ';
+}

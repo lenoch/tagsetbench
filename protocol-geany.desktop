@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Geany
+Exec=/home/Git/magic-links/my-uri-handler.py %u
+Icon=geany-icon
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/geany;

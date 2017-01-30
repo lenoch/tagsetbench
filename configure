@@ -1,0 +1,787 @@
+#!/usr/bin/env python3
+from collections import OrderedDict
+from contextlib import suppress
+from datetime import datetime
+from functools import reduce  # jen machrování
+from itertools import chain, product, zip_longest
+import json
+from pathlib import PosixPath
+from subprocess import run, PIPE
+import sys
+
+from log import log
+from makefile import Makefile, MakefileRecipe
+import models
+from models import (SourceCorpus, DerivedCorpus, TestingPair, Evaluation,
+                    Comparison, parse, Modification)
+import shlex
+from tagsetbench import read_args, serialize_input_params
+
+
+class ConfigureError(ValueError):
+    pass
+
+
+DUMMY_PATH = PosixPath('dummy.vert')
+OPTIONS = {
+    # processes applied to two compared corpora
+    'specification': '',
+
+    # master working directory (per-measurement working directories are
+    # created underneath the master one)
+    'working-dir': PosixPath(),  # cwd by default
+
+    'ungrouped-tagging-errors': True,  # ⇒ words to focus on
+    'errors-grouped-by-tag': True,  # ⇒ ambiguous attr combinations
+}
+
+
+PORTIONS = {
+    # default
+    'first-quarter': {
+        'training': ['25-100'],  # from-to endpoints (10-90), joined with ','
+        'testing': ['0-25'],  # non-overlapping (0-10,90-100), of course
+    },
+    'last-quarter': {
+        'training': ['0-75'],
+        'testing': ['75-100'],
+    },
+    'quarters': {
+        'training': ['25-100', '0-25,50-100', '0-50,75-100', '0-75'],
+        'testing': ['0-25', '25-50', '50-75', '75-100'],
+    },
+    # fifths?
+}
+
+
+CORPORA = {
+    # default
+    'preprocessed-desam-latest': {
+        'corpus': PosixPath('corpora/preprocessed-desam.vert'),
+        'sentence-boundaries': PosixPath(
+            'corpora/sentence-boundaries-desam.json'),
+    },
+    # stoka?
+}
+
+
+class TagsetBenchConfigure:  # TBC
+    def __init__(self, argv):
+        self.args = read_args(argv, OPTIONS)
+
+        # absolutní cesta ke configure.py bez symlinků, . a ..
+        self.args['self'] = PosixPath(__file__).resolve()
+        self.args['src-dir'] = self.args['self'].parent
+
+    def configure(self):
+        self.validate_parameters()
+        self.initialize_corpora()
+        self.create_common_working_directory()
+        self.create_comparisons()
+        self.store_test_settings()  # to replicate the measurement perfectly
+        self.create_master_makefile()
+        self.populate_working_directories()
+        self.create_makefiles_for_comparisons()
+
+    def validate_parameters(self):
+        self.specification = parse(self.args['specification'])
+
+        # 'full-evaluation': ('whole-tag k e g v n c p a m d x y t z w kgnc '
+        #                     'kegncpam kegncpamd')
+        self.evaluated_attributes = self.specification.options.get(
+            'evaluated-attributes', 'whole-tag').split()  # gnc
+
+        # WISH: tady nějak udělat 'reference', 'compared' (create_comparisons)?
+        while len(self.specification.sides) < 2:
+            self.specification.sides.insert(0, models.ComparedSide())
+
+        DEFAULT_CORPUS = CORPORA['preprocessed-desam-latest']
+        for evaluation in self.specification.sides:
+            if 'external' in evaluation.options:
+                continue
+
+            for role in ('training', 'testing'):
+                if '{}-corpus'.format(role) not in evaluation.options:
+                    evaluation.options['{}-corpus'.format(role)] = \
+                        DEFAULT_CORPUS['corpus']
+                if evaluation.options.get('preprocessed-{}'.format(role)) != \
+                'no' and '{}-corpus-sentence-boundaries'.format(role) not in \
+                evaluation.options:
+                    evaluation.options['{}-corpus-sentence-boundaries'.format(
+                        role)] = DEFAULT_CORPUS['sentence-boundaries']
+
+            path = evaluation.options.get('rftagger-wordclass-automaton')
+            if not path:
+                path = self.args['src-dir'] / 'wordclass.txt'
+            evaluation.options['rftagger-wordclass-automaton'] = PosixPath(
+                path)
+
+            path = evaluation.options.get('rftagger-possible-unknown-tags')
+            if path:
+                evaluation.options['rftagger-possible-unknown-tags'] = \
+                    PosixPath(path)
+
+        print('\n'.join(self.specification.encode()), file=sys.stderr)
+
+        portions = PORTIONS[self.specification.options.get('corpus-portions',
+                                                           'first-quarter')]
+        self.args['training-portion'] = portions['training']
+        self.args['testing-portion'] = portions['testing']
+
+        if 'training-portions' in self.specification.options:
+            self.args['training-portion'] = self.specification.options[
+                'training-portions'].split()
+            self.args['testing-portion'] = self.specification.options[
+                'testing-portions'].split()
+
+        # WISH: předávat asi parametry taggeru a vyhodnocovači (jestli koukat
+        #       dovnitř MWE, anebo je brát za jeden token) – trénovací
+        #       parametry mám asi vyřešený tím, že už můžu upravovat trénovací
+        #       korpus malinko jinak než testovací
+
+    def initialize_corpora(self):
+        self.source_corpora = OrderedDict()
+        for evaluation in self.specification.sides:
+            for role in ('training', 'testing'):
+                if 'external' in evaluation.options:
+                    path = sentence_boundaries_path = DUMMY_PATH
+                else:
+                    path = evaluation.options['{}-corpus'.format(role)]
+                    sentence_boundaries_path = evaluation.options[
+                        '{}-corpus-sentence-boundaries'.format(role)]
+                self.source_corpora[path] = SourceCorpus(
+                    path, sentence_boundaries_path, dummy=path == DUMMY_PATH)
+
+        for corpus in self.source_corpora.values():
+            if not corpus.dummy:
+                corpus.gather_metadata()
+
+        # WISH: když budou basenames stejný, možná je radši odlišit čísly, to
+        #       je jednodušší než zahrnovat do jména adresář (/ → -) – to vše
+        #       ale jen v případě, že nebudou zdrojový korpusy identický
+
+        # obsahujou TestingPair (training a testing corpus)
+        self.testing_pairs = []
+        self.training_corpora = []
+        self.testing_corpora = []
+        training_corpora = []
+        testing_corpora = []
+        self.training_corpora_sentence_boundaries = []
+        self.testing_corpora_sentence_boundaries = []
+
+        for evaluation in self.specification.sides:
+            if 'external' in evaluation.options:
+                training_corpus_path = testing_corpus_path = DUMMY_PATH
+            else:
+                training_corpus_path = evaluation.options['training-corpus']
+                testing_corpus_path = evaluation.options['testing-corpus']
+                self.training_corpora.append(training_corpus_path)
+                self.testing_corpora.append(testing_corpus_path)
+                self.training_corpora_sentence_boundaries.append(
+                    evaluation.options['training-corpus-sentence-boundaries'])
+                self.testing_corpora_sentence_boundaries.append(
+                    evaluation.options['testing-corpus-sentence-boundaries'])
+
+            self.testing_pairs.append(TestingPair(
+                self.source_corpora[training_corpus_path],
+                self.source_corpora[testing_corpus_path]
+            ))
+            training_corpora.append(training_corpus_path)
+            testing_corpora.append(testing_corpus_path)
+
+        partitioned_training_corpora = list(product(
+            training_corpora, self.args['training-portion']))
+        partitioned_testing_corpora = list(product(
+            testing_corpora, self.args['testing-portion']))
+
+        self.partitioned_corpora = OrderedDict(
+            ((path, partition), DerivedCorpus(self.source_corpora[path],
+                                              'partitioned', partition)) for
+            (path, partition) in partitioned_training_corpora +
+            partitioned_testing_corpora)
+
+    def create_common_working_directory(self):
+        """
+        Create a unique working directory under the master working directory.
+        """
+        log.debug('Master working directory: %s', self.args['working-dir'])
+        self.args['working-dir'].mkdir(parents=True, exist_ok=True)
+
+        self.working_dir = self.args['working-dir'] / format(
+            datetime.now(), '%Y%m%d-%H%M%S')
+
+        # WISH: zjednodušit názvy na "tagged-corpus-[12]"? nebo [ab]
+        log.info("Creating a dedicated working directory '%s'",
+                 self.working_dir)
+        self.working_dir.mkdir()
+
+        # Symlink binaries and auxiliary data into the working directory, so
+        # makefiles can expect a flat, simple file layout.
+        # Executables are expected to be in the same directory as configure.
+        _symlink_between_dirs('bootstrap.py',
+                              'split_corpus.py',
+                              'compare_evaluation.py',
+                              'template.html',
+                              'style.css', 'copy_rows.js',
+                              'tagsetbench.py', 'log.py', 'symbols.py',
+                              'vertical.py', 'xml_tag.py',
+                              # TODO: tags.py, protože to chtěj symbols.py
+                              #       (kvůli bootstrapu, co používá vertical)?
+                              src_dir=self.args['src-dir'],
+                              dst_dir=self.working_dir)
+
+    def create_comparisons(self):
+        """
+        Z toho nakonec vzejdou porovnání, která pak už jen nakonec hodím vedle
+        sebe do tabulky.
+        """
+        for (testing_pair, reference_or_compared, meta) in zip(
+                # obsahujou TestingPair (training a testing corpus)
+                self.testing_pairs,  # always two, even if identical
+                ('reference', 'compared'),  # and they serve as either role
+                self.specification.sides):
+
+            for training_portion, testing_portion in zip(
+                    self.args['training-portion'],
+                    self.args['testing-portion']):
+
+                partitioned_training_corpus = self.partitioned_corpora[
+                    (testing_pair.training_corpus.path, training_portion)]
+                partitioned_testing_corpus = self.partitioned_corpora[
+                    (testing_pair.testing_corpus.path, testing_portion)]
+
+                evaluation = Evaluation(partitioned_training_corpus,
+                                        partitioned_testing_corpus,
+                                        meta,
+                                        reference_or_compared)
+
+                if reference_or_compared == 'reference':
+                    testing_pair.reference_partitions.append(evaluation)
+                else:
+                    testing_pair.compared_partitions.append(evaluation)
+
+        reference_corpus_pair, compared_corpus_pair = self.testing_pairs
+
+        self.comparisons = []
+        for reference_partition, compared_partition in zip(
+                reference_corpus_pair.reference_partitions,
+                compared_corpus_pair.compared_partitions):
+            comparison = Comparison(reference_partition, compared_partition,
+                                    self.working_dir)
+            self.comparisons.append(comparison)
+
+            comparison.working_dir.mkdir()
+
+            _symlink_between_dirs(PosixPath(comparison.working_dir.name) /
+                                  comparison.json_summary.name,
+                                  PosixPath(comparison.working_dir.name) /
+                                  comparison.html_summary.name,
+                                  dst_dir=self.working_dir)
+
+    def store_test_settings(self):
+        """
+        For replication of test results.
+
+        všechny parametry nutné pro replikaci testů se uloží do souboru:
+        Git SHA a COMMITMSG tagsetbench a korpusu, nastavení „foldů“,
+        modifikace…
+        """
+        # TODO: nějak předávat clustery chyb (vyrvat je z evaluate_tagging.py)
+        self.settings_file = self.working_dir / 'settings.json'
+
+        self.args['source-corpora'] = OrderedDict(
+            (str(path), str(source_corpus)) for
+            (path, source_corpus) in self.source_corpora.items())
+        self.args['git-commit'] = run(
+            'git show --oneline --no-patch'.split(),
+            cwd=str(self.args['src-dir']),
+            stdout=PIPE, universal_newlines=True).stdout.strip()
+        args = serialize_input_params(self.args)
+
+        self.settings_file.write_text(
+            json.dumps(args, sort_keys=True, indent=4))
+
+    def create_master_makefile(self):  # create_common_makefile
+        """
+        Prepare a makefile to clean up the source corpus/corpora and store the
+        cleaned ones in the working directory.
+
+        As an important byproduct, also determine line numbers at which to
+        partition the corpora into training/testing sets, as per --partitions
+        parameters, aligning the portions at sentence boundaries, while taking
+        up e.g. 20% of tokens contained in the sentences.
+        """
+        # WISH: vymyslet unikátní jména pro zdrojový korpusy
+        # TODO: přesunout tohle spíš do populate_common_working_directory, ne?
+        _symlink_between_dirs(*self.training_corpora, resolve=True,
+                              dst_dir=self.working_dir)
+        _symlink_between_dirs(*self.training_corpora_sentence_boundaries,
+                              resolve=True, dst_dir=self.working_dir)
+        _symlink_between_dirs(*self.testing_corpora, resolve=True,
+                              dst_dir=self.working_dir)
+        _symlink_between_dirs(*self.testing_corpora_sentence_boundaries,
+                              resolve=True, dst_dir=self.working_dir)
+
+        self.master_makefile = Makefile(path=self.working_dir / 'Makefile')
+
+        reference_pair, compared_pair = self.testing_pairs
+        log.info('Reference partition: %s (training) vs. %s (testing)',
+                 reference_pair.training_corpus.path,
+                 reference_pair.testing_corpus.path)
+        log.info('Compared partition: %s (training) vs. %s (testing)',
+                 compared_pair.training_corpus.path,
+                 compared_pair.testing_corpus.path)
+        log.info("Creating the master makefile: '%s'",
+                 self.master_makefile.path)
+
+        preprocessed_files = []
+        for corpus in self.source_corpora.values():
+            if corpus.dummy:
+                continue
+            preprocessed_files.append(corpus.sentence_boundaries_path)
+            preprocessed_files.append(corpus.preprocessed_path)
+
+        result_recipes = []
+        for comparison in self.comparisons:
+            result = self._create_result_recipe(comparison,
+                                                preprocessed_files)
+            result_recipes.append(result)
+
+        # TODO: vím, že by to šlo udělat se self.comparisons .comparison
+        self.master_makefile.recipes.append(MakefileRecipe(
+            dependencies=reduce(list.__add__,
+                                (result.targets for result in result_recipes),
+                                []),
+            targets=['compared_parts.html'],
+            commands=[['./compare_evaluation.py',
+                       '--merged-comparison', 'compared_parts.html',
+                       '--measurement', self.specification.options['id'],
+                       '--folds'] + [comparison.working_dir.name
+                                     for comparison in self.comparisons]],
+            delete_on_error=False,  # by default, files are always deleted
+        ))
+
+        self.master_makefile.recipes.extend(result_recipes)
+
+        if not self.training_corpora_sentence_boundaries:
+            self.master_makefile.recipes.append(
+                '# simplification of markup (<s>tokens</s>) and token '
+                'counting')
+
+            for corpus in self.source_corpora.values():
+                if not corpus.dummy:
+                    preprocess_corpus = self._preprocess_corpus_recipe(corpus)
+                    self.master_makefile.recipes.append(preprocess_corpus)
+
+        self.master_makefile.recipes.append(
+            '# partitioning of corpora into training/testing parts (training '
+            'corpus partitions first, testing corpus next, if not identical)')
+
+        for partitioned_corpus in self.partitioned_corpora.values():
+            if not partitioned_corpus.parent_corpus.dummy:
+                split_corpus = self._split_corpus_recipe(partitioned_corpus)
+                self.master_makefile.recipes.append(split_corpus)
+
+        self.master_makefile.write()
+
+    def _preprocess_corpus_recipe(self, corpus):
+        command = ['./bootstrap.py',
+                   '--source-corpus', corpus.source_path.name,
+                   '--preprocessed-corpus', corpus.preprocessed_path.name,
+                   '--sentence-boundaries',
+                   corpus.sentence_boundaries_path.name]
+
+        return MakefileRecipe(dependencies=[corpus.source_path],
+                              targets=[corpus.sentence_boundaries_path,
+                                       corpus.preprocessed_path],
+                              commands=[command])
+
+    def _create_result_recipe(self, comparison, preprocessed_files):
+        return MakefileRecipe(
+            dependencies=comparison.distant_dependencies,
+            targets=[comparison.json_summary, comparison.html_summary],
+            commands=[
+                [
+                    '$(MAKE)',
+                    '-C', comparison.working_dir.name,
+                    '-f', 'Makefile',
+                 ],
+            ])
+
+    def _split_corpus_recipe(self, partitioned_corpus):
+        source_corpus = partitioned_corpus.parent_corpus
+
+        return MakefileRecipe(
+            dependencies=partitioned_corpus.dependencies,
+            targets=[partitioned_corpus],
+            commands=[
+                ['./split_corpus.py',
+                 '--preprocessed-corpus', source_corpus.preprocessed_path.name,
+                 '--sentence-boundaries',
+                 source_corpus.sentence_boundaries_path.name,
+                 # NOTE: mezery na to, aby se z toho vytvořily samostatný argv
+                 '--portion', partitioned_corpus.partition.replace(',', ' '),
+                 '--partitioned-corpus', partitioned_corpus,
+                 ],
+            ])
+
+    def populate_working_directories(self):
+        """
+        Symlink binaries and auxiliary data into the working directory, so
+        makefiles can expect a flat, simple file layout.
+        """
+        # executables are expected to be in the same directory as configure
+        for comparison in self.comparisons:
+            _symlink_between_dirs('compare_evaluation.py',
+                                  'modifier',  # a whole package
+                                  'modify_corpus.py',
+                                  'create_model.py', 'annotate.py',
+                                  'evaluate_tagging.py',
+                                  'create_lexicon.py',
+                                  'template.html',
+                                  'style.css',
+                                  'copy_rows.js',
+                                  'tagsetbench.py', 'log.py', 'symbols.py',
+                                  'vertical.py', 'xml_tag.py',
+                                  'html_writer.py',
+                                  'shlex.py', 'tags.py',
+                                  src_dir=self.args['src-dir'],
+                                  dst_dir=comparison.working_dir)
+
+            external_files = []
+            for evaluation in self.specification.sides:
+                external_files.append(evaluation.options.get(
+                    'rftagger-wordclass-automaton'))  # mandatory
+                external_files.append(evaluation.options.get(
+                    'rftagger-possible-unknown-tags'))  # optional
+            _symlink_between_dirs(*filter(None, external_files),
+                                  dst_dir=comparison.working_dir, resolve=True)
+
+            for corpus in comparison.distant_dependencies:
+                _symlink_between_dirs(
+                    PosixPath('..') / corpus.path.name,
+                    dst_dir=comparison.working_dir)
+
+            _symlink_between_dirs(PosixPath('..') / self.settings_file.name,
+                                  dst_dir=comparison.working_dir)
+
+    def create_makefiles_for_comparisons(self):
+        for comparison in self.comparisons:
+            comparison.makefile = Makefile(
+                path=PosixPath(comparison.working_dir / 'Makefile'))
+            log.info("Creating a makefile for a comparison: '%s'",
+                     comparison.makefile.path)
+
+            evaluations = [comparison.reference_corpus,
+                           comparison.compared_corpus]
+
+            for evaluation in evaluations:
+                # TODO: někde asi dřív ještě z těch adresářů natahat settings.json
+                #       a nalepit je do lokálního settings.json?
+                # NOTE: to stačí udělat na vyšší úrovni
+                external = evaluation.options.get('external')
+                if external:
+                    evaluation.external_tagged_corpus = PosixPath(run(
+                        'cd {}; ls ../../../{}/*/{}/{} | head -n 1'.format(
+                            comparison.makefile.path.parent, external,
+                            # training & testing portions
+                            '_'.join(comparison.name_parts),
+                            models.join_name_parts(
+                                evaluation, 'tagged_corpus'.split('_'),
+                                '.vert',
+                                [evaluation.options.get('external-side',
+                                                        'reference')]),
+                        ), shell=True, check=True, stdout=PIPE,
+                        universal_newlines=True).stdout.strip())
+                    evaluation.external_training_lexicon = \
+                        evaluation.external_tagged_corpus.with_name(
+                            str(evaluation.training_corpus.lexicon.path))
+
+            comparison.makefile.recipes.append('# evaluation')
+
+            result_recipe = self.evaluate_corpora_recipe(comparison)
+            comparison.makefile.recipes.append(result_recipe)
+
+            comparison.makefile.recipes.append('# tagging')
+
+            for evaluation in evaluations:
+                if evaluation.external_tagged_corpus:
+                    comparison.makefile.recipes.append(
+                        self.link_external_tagged_corpus_recipe(
+                            evaluation))
+                else:
+                    comparison.makefile.recipes.append(
+                        self.annotate_corpus_recipe(evaluation))
+
+            comparison.makefile.recipes.append('# learning')
+
+            for evaluation in evaluations:
+                if evaluation.external_tagged_corpus:
+                    continue
+                comparison.makefile.recipes.append(
+                    self.create_model_recipe(evaluation))
+
+            comparison.makefile.recipes.append('# proprocessing for learning')
+
+            for evaluation in evaluations:
+                if evaluation.external_tagged_corpus:
+                    continue
+                training_corpus_for_tagger = self.modify_corpus_recipe(
+                    evaluation.training_corpus,
+                    evaluation.preprocessed_for_training,
+                    # WISH: zobecnit (preprocessed-for-tagging.rftagger)
+                    # WISH: díky tomu bude moct modify_corpus_recipe udělat
+                    #       rovnou ls, když náhodou nebude tagger RFTagger
+                    #       a bude mu stačit obyčejnej vertikál (anebo když
+                    #       trénování udělám skrz pajpu (pojmenovanou rouru)
+                    #       s preprocessingem na jedné straně a rft-train na 2.
+                    [Modification('rftagger-preprocess')])
+                comparison.makefile.recipes.append(training_corpus_for_tagger)
+
+            comparison.makefile.recipes.append('# lexicons')
+
+            for evaluation in evaluations:
+                if evaluation.external_training_lexicon:
+                    lexicon_from_training = self.link_external_lexicon_recipe(
+                        evaluation)
+                else:
+                    lexicon_from_training = self.create_lexicon_recipe(
+                        evaluation.training_corpus, 'template.html',
+                        evaluation.training_corpus.lexicon)
+                    lexicon_from_testing = self.create_lexicon_recipe(
+                        evaluation.testing_corpus, 'template.html',
+                        evaluation.testing_corpus.lexicon)
+                comparison.makefile.recipes.append(lexicon_from_training)
+                if not evaluation.external_training_lexicon:
+                    comparison.makefile.recipes.append(lexicon_from_testing)
+
+            # na vytvoření modelu, a slovníku (ne)známých slov
+            comparison.makefile.recipes.append('# modified training corpora')
+
+            for evaluation in evaluations:
+                if evaluation.external_tagged_corpus:
+                    continue
+                modify_training_corpus = self.modify_corpus_recipe(
+                    evaluation=evaluation, role='training')
+                comparison.makefile.recipes.append(modify_training_corpus)
+
+            comparison.makefile.recipes.append('# modified testing corpora')
+
+            for evaluation in evaluations:
+                if evaluation.external_tagged_corpus:
+                    continue
+                modify_testing_corpus = self.modify_corpus_recipe(
+                    evaluation=evaluation, role='testing')
+                comparison.makefile.recipes.append(modify_testing_corpus)
+
+            comparison.makefile.write()
+
+    def evaluate_corpora_recipe(self, comparison):
+        """
+        TODO: jen asi do textu… (prostě jenom zároveň vyhodnocuju oba korpusy
+              a přeskakuju v obou řádky, když se měnily…)
+        Create a recipe to compare the testing corpus annotated using the model
+        built from the training corpus – against the golden testing corpus.
+        """
+        reference_corpus = comparison.reference_corpus
+        compared_corpus = comparison.compared_corpus
+
+        command = ['./evaluate_tagging.py',
+                   '--reference-corpus', reference_corpus,
+                   '--compared-corpus', compared_corpus,
+                   '--global-settings', self.settings_file.name,
+                   '--reference-training-lexicon',
+                   reference_corpus.training_corpus.lexicon,
+                   '--compared-training-lexicon',
+                   compared_corpus.training_corpus.lexicon,
+                   '--attribute'
+                   ] + self.evaluated_attributes + [  # ['whole-tag']
+                   '--json-summary', comparison.json_summary,
+                   '--html-summary', comparison.html_summary,
+                   '--latex-summary', comparison.latex_summary,
+                   ]
+
+        if self.args['ungrouped-tagging-errors']:  # ⇒ words to focus on
+            command += ['--ungrouped-tagging-errors']
+        if self.args['errors-grouped-by-tag']:  # ⇒ ambiguous attr combinations
+            command += ['--errors-grouped-by-tag']
+
+        return MakefileRecipe(
+            # JSON with evaluation on certain POS tag attributes
+            targets=[comparison.json_summary, comparison.html_summary],
+            dependencies=comparison.immediate_dependencies,
+            commands=[command])
+
+    def modify_corpus_recipe(self, input_corpus=None, output_corpus=None,
+                             modifications=None, evaluation=None, role=None):
+        if evaluation:
+            input_corpus = getattr(evaluation,
+                                   'partitioned_{}_corpus'.format(role))
+            output_corpus = getattr(evaluation, '{}_corpus'.format(role))
+            modifications = getattr(evaluation.meta,
+                                    '{}_modifications'.format(role))
+            options = evaluation.meta.options
+        else:
+            options = {}
+
+        # TODO: modifikátory pro bootstrap asi dát někam sem, ať není
+        #       modify_corpus.py moc chytrej
+        if options.get('bootstrap', 'yes').lower() in ('', 'no', 'false') \
+                and not modifications:
+            command = ['ln', '-s',
+                       input_corpus,
+                       output_corpus,
+                       ]
+        else:
+            command = ['./modify_corpus.py',
+                       '--input-corpus', input_corpus]
+
+            # TODO: vyhazovat parametry tagger, rftagger-possible-unknown-tags
+
+            # TODO: přejmenovat prostě na --modifications
+            # v options může bejt "bootstrap=no" a takový věci
+            specification = list('{}={}'.format(option, value)
+                                 for (option, value) in options.items())
+            specification += list(
+                chain.from_iterable(modification.encode()
+                for modification in modifications))
+            command += ['--complex-modification',
+                        "'" + ';'.join(m.strip() for m in specification) +
+                        # TODO: určitě shlex.escape(modification_option)
+                        "'"]
+            # zkouším s xdg-open 'tagsetbench:run?META;
+            # id=ordinals-fixed-first-jen-pokus;COMPARED_SIDE;
+            # COMPARED_SIDE;TRAINING_TESTING;MODIFIER;MATCH;lc=\d\.;SET;x=O;
+            # MODIFIER;MATCH;k=4;x=O;SET;k=2'
+
+            command += ['--output-corpus', output_corpus]
+
+        return MakefileRecipe(
+            targets=[output_corpus],
+            dependencies=[input_corpus],
+            commands=[command])
+
+    def create_lexicon_recipe(self, input_corpus, html_template,
+                              output_lexicon):
+        # WONTFIX: klidně by se mohly dělat už během úpravy, proč ten
+        #          upravenej korpus číst znovu… no jo, UNIX way
+        # budu naopak create_lexicon.py asi rozšiřovat, protože nad ním musím
+        # postavit analýzu četnosti jevů, které chci měnit – abych věděl, která
+        # rodina tokenů je jak častá a jaký bude dopad, když se změní
+        return MakefileRecipe(
+            targets=[output_lexicon],
+            dependencies=[input_corpus],
+            commands=[
+                ['./create_lexicon.py',
+                 '--corpus', input_corpus,
+                 '--lexicon', output_lexicon,
+                 ],
+            ])
+
+    def create_model_recipe(self, evaluation):
+        # WISH: co třeba ./tagger.py create-model/annotate/preprocess?
+        # WISH: anebo když mám teda makefile v moci, tak ./rftagger, že bych
+        #       nemusel předávat --tagger a zjednodušil jména parametrů?
+        dependencies = [evaluation.preprocessed_for_training]
+
+        command = ['/usr/bin/time', '-v',  # kolik to sežere času a paměti?
+                   './create_model.py',
+                   # '--tagger', evaluation.options.get('tagger', 'rftagger'),
+                   '--training-corpus', evaluation.preprocessed_for_training,
+                   '--model', evaluation.trained_model,
+                   '--training-log', evaluation.training_log,
+                   ]
+
+        command += ['--rftagger-wordclass-automaton',
+                    evaluation.options['rftagger-wordclass-automaton'].name]
+
+        # TODO: ať má ComparedSide aspoň implicitně None nebo tak něco
+        #       (jako bylo dřív „díky“ zip_longest)
+        if 'rftagger-context-length' in evaluation.options:
+            command += [
+                '--rftagger-context-length',
+                str(evaluation.options['rftagger-context-length'])]
+
+        # TODO: vyzkoušet na asteria04
+        # TODO: použít '/usr/bin/time -v' (viz http://stackoverflow.com/questions/774556/
+        #       peak-memory-usage-of-a-linux-unix-process)
+        rftagger_lexicon = evaluation.options.get('rftagger-lexicon')
+        if is_file_if_defined(rftagger_lexicon):
+            command += [
+                '--rftagger-lexicon', rftagger_lexicon.resolve()]
+
+        open_word_categories = evaluation.options.get(
+            'rftagger-possible-unknown-tags')
+        if is_file_if_defined(open_word_categories):
+            command += ['--rftagger-possible-unknown-tags',
+                        open_word_categories.name]
+
+        return MakefileRecipe(
+            targets=[evaluation.trained_model],
+            dependencies=dependencies,
+            commands=[command])
+
+    def annotate_corpus_recipe(self, evaluation):
+        command = ['./annotate.py',
+                   # '--tagger', evaluation.options.get('tagger', 'rftagger'),
+                   '--model', evaluation.trained_model,
+                   '--corpus', evaluation.testing_corpus,
+                   '--tagged-corpus', evaluation.tagged_corpus,
+                   ]
+        if evaluation.options.get('rftagger-try-lowercase') in ('yes', 'true'):
+            command += ['--rftagger-try-lowercase']
+
+        return MakefileRecipe(
+            targets=[evaluation.tagged_corpus],
+            dependencies=[evaluation.testing_corpus,
+                          evaluation.trained_model],
+            commands = [command])
+
+    def link_external_tagged_corpus_recipe(self, evaluation):
+        return MakefileRecipe(
+            targets=[evaluation.tagged_corpus],
+            dependencies=[],
+            commands=[
+                ['ln', '-s',
+                 evaluation.external_tagged_corpus,
+                 evaluation.tagged_corpus,
+                 ],
+            ])
+
+    def link_external_lexicon_recipe(self, evaluation):
+        return MakefileRecipe(
+            targets=[evaluation.training_corpus.lexicon],
+            dependencies=[],
+            commands=[
+                ['ln', '-s',
+                 evaluation.external_training_lexicon,
+                 evaluation.training_corpus.lexicon,
+                 ],
+            ])
+
+def _symlink_between_dirs(*files, src_dir=None, dst_dir=None, resolve=False):
+    for path in files:
+        if not path:
+            continue
+        link = dst_dir / (path if isinstance(path, str) else path.name)
+        if src_dir:
+            # TODO: když se budu nudit, můžu nějak použít Path.relative_to()
+            if resolve:
+                src_dir = src_dir.resolve()
+            path = src_dir / path
+        elif resolve:
+            path = path.resolve()
+        # TODO: nelinkovat nic dvakrát
+        with suppress(FileExistsError):
+            # TODO: a pak ověřovat, že to je odkaz a vede na to samé místo
+            link.symlink_to(path)
+
+
+def is_file_if_defined(value):
+    return value is not None and value.is_file()
+
+
+if __name__ == '__main__':
+    cfg = TagsetBenchConfigure(sys.argv)
+    cfg.configure()
+    print(cfg.working_dir)

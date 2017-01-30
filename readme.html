@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="author" content="Ondřej Svoboda <lenoch@mail.muni.cz>">
+<title>tagsetbench</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="content">
+<h1>tagsetbench</h1>
+
+<p>At the heart of <code>tagsetbench</code>, there is a directory-based spooler
+(<code>spooler.py</code>)
+which peeks at files in a designated directory and runs the oldest file
+(usually a script), optionally making it executable beforehand.</p>
+
+<p>Scripts which automate the whole process of training, evaluating and comparing
+of (modified) corpora, are created by <code>generate_measurements.py</code>,
+which is to be edited manually.</p>
+
+<p>The generated scripts first invoke <code>configure</code>, which creates
+a directory with a full environment consisting of <code>Makefile</code>s, source
+corpora (symlinked) and various components of <code>tagsetbench</code>.
+<code>configure</code> prints the created directory name (disambiguated with
+the current date and time) to standard output. The directory name is then
+passed to <code>make</code>, the traditional UNIX build tool, which runs the
+<code>Makefile</code>s. I suffered a lot generating them, a lot. Never more.
+(Perhaps Meson and its ninja backend would have saved me from pain.)</p>
+
+<p>The generator, not very conveniently for fresh setups, relies on a special type
+or URIs to be supported. Just like <code>mailto:</code> or <code>irc:</code>
+result in an action, I created <code>tagsetbench:</code>, <code>spooler:</code>
+and <code>enqueue:</code> pseudo-protocols (the last one should be made a part
+of <code>spooler:</code>.</p>
+
+<p>The links are handled by <code title="perhaps to be called URI 4 Life">my-uri-handler.py</code>,
+and are configured
+in <code>~/.config/mimeapps.list</code>, to which lines such as <pre>
+[Added Associations]
+…
+x-scheme-handler/geany=protocol-geany.desktop;
+x-scheme-handler/okular=protocol-okular.desktop;
+x-scheme-handler/dicto=protocol-dicto.desktop;
+x-scheme-handler/enqueue=protocol-enqueue.desktop;
+x-scheme-handler/tagsetbench=protocol-tagsetbench.desktop;
+x-scheme-handler/notes=protocol-notes.desktop;
+x-scheme-handler/spooler=protocol-spooler.desktop;</pre>
+should be added.</p>
+
+<p>The <code>*.desktop files</code> (found in this archive) should be copied/linked
+to <code>~/.local/share/applications</code>. The <code>deploy.sh</code> script
+shows how this can be done.</p>
+
+<p>Back to the generator. Internally, it calls <code>xdg-open</code> to “run” the
+<code>tagsetbench:</code> links just as if they were clicked in e.g. a web browser.</p>
+
+<p>This causes <code>my-uri-handler.py</code> to be called with a link like
+<code>tagsetbench:run?FILTER;MATCH;k=\?;lc=-;SET;tag=kIx~;COMPARE;id=annotate-dashes</code>
+– there are quite a few examples in <a href="pokusy.html">the list of experiments</a>.</p>
+
+<p>As a result, a script is generated and stored in a directory designated by
+the <code>MEASUREMENTS_DIR</code> constant.</p>
+
+Futher guidance will be given at <a href="https://github.com/lenoch">https://github.com/lenoch</a>
+in two new projects: <code>tagsetbench</code> and <code title="or just life-hacks">uri4life</code>.
+
+</div>
+</body>
+</html>

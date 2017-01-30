@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>📏 tagsetbench – pokusy</title>
+</head>
+<body>
+<div id="content">
+<nav><ul>
+    <li><a href="readme.html">🌴 readme</a></li>
+    <li><a href="pokusy.html">📏 pokusy</a></li>
+    <li><a href="geany:/home/Diplomka/html/pokusy.html">🖍 upravit</a></li>
+</ul></nav>
+
+<h1><span style="font-weight: normal">📏</span> tagsetbench – pokusy</h1>
+
+<h2>Spouštění</h2>
+<ul>
+    <li>nejdřív spooler v session <code>spooler-mgr</code></li>
+    <ul>
+        <li><code>tmux -u new-session -d -s spooler-mgr -c /home/Škola/Diplomka</code></li>
+        <li><code>tmux -u send-keys -t spooler-mgr 'tagsetbench/spooler.py --make-executable' Enter</code></li>
+    </ul>
+    <li>pak už stačí použít odkazy typu
+        <code><a href="enqueue:/home/Škola/Diplomka/measurements/desam-latest-remove-zA.sh?mgr">enqueue:desam-latest-remove-zA.sh?mgr</a></code></li>
+    <li>instalace na Auroru: <code>for f in tagsetbench-1123.tar.bz2; do scp $f 'xsvobo15@aurora.fi.muni.cz:/home/xsvobo15/'; ssh xsvobo15@aurora.fi.muni.cz -C "tar -xf $f"; done;</code></li>
+</ul>
+
+<h2>Pustit</h2>
+<table id="tabulka-mereni">
+    <tr>
+        <th><span style="font-weight: normal">🎬</span> spouštěč<br></th>
+        <th><span style="font-weight: normal">📏</span> výsledek <span style="font-weight: normal">📊</span></th>
+        <th><span style="font-weight: normal">❓</span> analýza/rozbor</th>
+    </tr>
+    <tr id="strucne-unmodified-ctx-5">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;bootstrap=no;rftagger-context-length=5;EVALUATE;bootstrap=no;rftagger-context-length=5;COMMON;id=unmodified-ctx-5;corpus-portions=quarters">unmodified-ctx-5</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5/20161202-125945/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5/20161202-160435/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5 -->
+    <tr id="strucne-lexicon-ctx-5">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;COMMON;id=lexicon-ctx-5;corpus-portions=quarters">lexicon-ctx-5</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5/20161202-153712/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5 -->
+    <tr id="strucne-unmodified-ctx-5-lowercase">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;COMMON;id=unmodified-ctx-5-lowercase;corpus-portions=quarters">unmodified-ctx-5-lowercase</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5-lowercase.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5-lowercase.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5-lowercase">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5-lowercase/20161202-174739/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5-lowercase">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5-lowercase -->
+    <tr id="strucne-lexicon-ctx-5-lowercase">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;COMMON;id=lexicon-ctx-5-lowercase;corpus-portions=quarters">lexicon-ctx-5-lowercase</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase/20161202-172036/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase -->
+    <tr id="strucne-unmodified-ctx-5_vs_unmodified-ctx-5-lowercase">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified-ctx-5;EVALUATE;external=unmodified-ctx-5-lowercase;COMMON;id=unmodified-ctx-5_vs_unmodified-ctx-5-lowercase;corpus-portions=quarters">unmodified-ctx-5_vs_unmodified-ctx-5-lowercase</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_unmodified-ctx-5-lowercase.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_unmodified-ctx-5-lowercase.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5_vs_unmodified-ctx-5-lowercase">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5_vs_unmodified-ctx-5-lowercase">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5_vs_unmodified-ctx-5-lowercase">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5_vs_unmodified-ctx-5-lowercase -->
+    <tr id="strucne-lexicon-ctx-5_vs_lexicon-ctx-5-lowercase">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5;EVALUATE;external=lexicon-ctx-5-lowercase;COMMON;id=lexicon-ctx-5_vs_lexicon-ctx-5-lowercase;corpus-portions=quarters">lexicon-ctx-5_vs_lexicon-ctx-5-lowercase</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_lexicon-ctx-5-lowercase.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_lexicon-ctx-5-lowercase.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5_vs_lexicon-ctx-5-lowercase">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5_vs_lexicon-ctx-5-lowercase">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5_vs_lexicon-ctx-5-lowercase">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5_vs_lexicon-ctx-5-lowercase -->
+    <tr id="strucne-unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified-ctx-5-lowercase;external-side=reference;EVALUATE;external=lexicon-ctx-5-lowercase;external-side=compared;COMMON;id=unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase;corpus-portions=quarters">unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase/20161202-210311/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5-lowercase__vs__lexicon-ctx-5-lowercase -->
+    <tr>
+        <th colspan="3">doznačkování (to mám i dole jako vznikající bootstrap)</th>
+    </tr>
+    <tr>
+        <td><a href="enqueue:rok-zkratkou.sh?mgr">doznačkování</a> <em title="roku">r.</em><br>
+            <span style="font-weight: normal">🖍</span> <a href="geany:/home/Diplomka/measurements/rok-zkratkou.sh">upravit</a></td>
+        <td>± <a href="/measurements/rok-zkratkou">tady</a>
+            <a href="/measurements/rok-zkratkou/rftagger-preprocessed-desam-latest-rftagger-ctx-4-no-modification-rok-zkratkou-last-quarter-full-evaluation-2016-10-16-23-51-38/comparison-summary-0-75-75-100.html"
+               title="Fakt úchylný ty názvy, pryč s tim!">tabulka</a></td>
+        <td>✅ <a href="zkratky.html#rok-zkratkou">bez připomínek</a></td>
+    </tr>
+    <tr>
+        <td><a href="enqueue:napr.sh?mgr">doznačkování</a> <em>např.</em> → <code>k6</code><br>
+            <span style="font-weight: normal">🖍</span> <a href="geany:/home/Diplomka/measurements/napr.sh">upravit</a></td>
+        <td></td>
+        <td><a href="prislovce.html#napr">tady bude</a></td>
+    </tr>
+    <tr>
+        <td>nahrazení <code>k?</code> → <code>k1</code><br><span style="font-weight: normal">🖍</span> upravit</td>
+        <td></td>
+        <td><a href="#assume-nouns">tady bude</a></td>
+    </tr>
+    <tr>
+        <td><a href="enqueue:remove-zA.sh?mgr">odstranění</a> <code>zA</code><br>
+            <span style="font-weight: normal">🖍</span> <a href="geany:/home/Diplomka/measurements/remove-zA.sh">upravit</a></td>
+        <td>± <a href="http://localhost/measurements/remove-zA">tady</a></td>
+        <td><a href="zkratky.html#remove-zA">tady bude</a></td>
+    </tr>
+    <tr>
+        <td><a href="enqueue:trpny-pricesti.sh?mgr">trpný příčestí</a> → <code>k2</code><br>
+            <span style="font-weight: normal">🖍</span> <a href="geany:/home/Diplomka/measurements/trpny-pricesti.sh">upravit</a></td>
+        <td>± <a href="/measurements/trpny-pricesti">tady</a></td>
+        <td>🔨 <a href="pridavny-jmena.html#participia">zestručnit</a></td>
+    </tr>
+    <tr>
+        <td><a href="enqueue:zensky-prijmeni.sh?mgr">ženský příjmení</a> → <code>k2</code><br>
+            <span style="font-weight: normal">🖍</span> <a href="geany:/home/Diplomka/measurements/zensky-prijmeni.sh">upravit</a></td>
+        <td>± <a href="/measurements/zensky-prijmeni">tady</a></td>
+        <td>🔨 <a href="pridavny-jmena.html#zensky-prijmeni">zestručnit</a></td>
+    </tr>
+    <tr>
+        <td>řadový číslovky → <code>k2</code><br>
+            <span style="font-weight: normal">🖍</span> upravit</td>
+        <td></td>
+        <td><a href="pridavny-jmena.html#radovy-cislovky">tady bude</a></td>
+    </tr>
+    <tr id="strucne-nedoznackovany-tj">
+        <td>🏗 <a href="tagsetbench:run?MATCH;lc=tj\.;k=\?;SET;k=8;x=C;z=A;COMMON;id=nedoznackovany-tj">doznačkování</a> <em>tj.</em> → <code>k8xCzA</code><br>
+            🎬 <a href="enqueue:nedoznackovany-tj.sh?mgr">lokálně</a><br>
+            🎬 <a href="enqueue:nedoznackovany-tj.sh?aurora">na Auroře</a></td>
+        <td>± <a href="/measurements/nedoznackovany-tj">tady</a><br>
+            ± <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/nedoznackovany-tj">Aurora</a><br>
+            💡 <a href="tagsetbench:result?nedoznackovany-tj&amp;ungrouped-errors">TODO: rychlej odkaz</a></td>
+        <td>✅ <a href="#nedoznackovany-tj">výbornej výsledek</a>, ale projít 🔨</td>
+    </tr><!-- id=nedoznackovany-tj -->
+    <tr>
+        <td colspan="3">
+            <ul>
+                <li>TODO: odkaz <code>tagsetbench:run</code> přejmenovat na
+                    <code>tagsetbench:task</code> (nebo tak nějak), protože pokus/měření
+                    nespouští, jen generuje nebo nechává upravit</li>
+                <li>✅ poslední fáze pohodlnosti – generovat i řádky téhle
+                    <span title='prostě vnitřek &lt;table id="tabulka-mereni"/&gt;'>tabulky</span>
+                    na základě předpisu pro měření (hned tady nahoře bejvalo stačilo
+                    <code>MATCH;lc=tj\.;k=\?;SET;k=8;x=C;z=A;COMMON;id=nedoznackovany-tj</code>)</li>
+            </ul>
+        </td>
+    </tr>
+    <tr id="strucne-doznackovani-tj-napr">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=\?;lc=tj\.;SET;k=8;x=C;z=A;FILTER;MATCH;k=\?;lc=např\.;SET;k=6;z=A;COMMON;id=doznackovani-tj-napr">doznačkování</a> <em>tj.</em> a <em>např.</em><br>
+            🎬 <a href="enqueue:doznackovani-tj-napr.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:doznackovani-tj-napr.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/doznackovani-tj-napr">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/doznackovani-tj-napr/20161018-232459/0-75-75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#doznackovani-tj-napr">komentář</a></td>
+    </tr><!-- id=doznackovani-tj-napr -->
+    <tr id="strucne-doznackovani-tj-napr-r">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=tj\.;k=\?;SET;k=8;x=C;z=A;FILTER;MATCH;lc=např\.;k=\?;SET;k=6;z=A;FILTER;MATCH;lc=r\.;k=\?;SET;k=1;g=I;z=A;COMMON;id=doznackovani-tj-napr-r">doznačkování</a> <em>tj.</em>, <em>např.</em> a
+            <em>r.</em><br>
+            🎬 <a href="enqueue:doznackovani-tj-napr-r.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:doznackovani-tj-napr-r.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/doznackovani-tj-napr-r">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/doznackovani-tj-napr-r/20161018-234628/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#doznackovani-tj-napr-r">komentář</a></td>
+    </tr><!-- id=doznackovani-tj-napr-r -->
+    <tr>
+        <td colspan="3">
+            <ul>
+                <li>k doznačkování <em>r.</em> (<em>roku</em>) jsem si napsal, že
+                    by se hodilo doplňovat (pro konzistenci) <code>gI</code> do už
+                    existujících značek (které někdy rod nemají – možná ani <code>zA</code>?)</li>
+                <ul>
+                    <li>v dalším pokusu opravuju i <em>r.</em> <code>k1zA</code> → <code>k1gIzA</code></li>
+                </ul>
+                <li>BTW, (radši) kvóty na Auroře?</li>
+            </ul>
+        </td>
+    </tr>
+    <tr id="strucne-doznackovani-tj-napr2-r2">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=tj\.;k=\?;SET;k=8;x=C;z=A;FILTER;MATCH;lc=např\.;k=6;SET;z=A;FILTER;MATCH;lc=např\.;k=\?;SET;k=6;z=A;FILTER;MATCH;lc=r\.;k=1;z=A;SET;g=I;FILTER;MATCH;lc=r\.;k=\?;SET;k=1;g=I;z=A;COMMON;id=doznackovani-tj-napr2-r2">doznačkování</a> <em>tj.</em>, <em>např.</em> a
+            <em>r.</em> (líp)<br>
+            🎬 <a href="enqueue:doznackovani-tj-napr2-r2.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:doznackovani-tj-napr2-r2.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/doznackovani-tj-napr2-r2/20161111-231937/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/doznackovani-tj-napr2-r2/20161019-000814/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#doznackovani-tj-napr2-r2">komentář</a></td>
+    </tr><!-- id=doznackovani-tj-napr2-r2 -->
+    <tr>
+        <td colspan="3">
+            <ul>
+                <li><em>např.</em> bylo původně buď neoznačkovaný (<code>k?</code>),
+                    anebo s <code>k6</code></li>
+                <li>takže jsem přidal ještě konverzi <em>např.</em> <code>k6</code> → <code>k6zA</code></li>
+                <li>opravdu by bylo super mít kontext: „z/z/<code>k7c2</code>
+                    r./rok/<code>k1gInSc2zA</code> 1958/####/<code>k4</code>“, jindy
+                    lokál podle předložky <em>v</em>, někdy dativ („<em>k r.</em>“),
+                    nakonec i akuzativ (<em>[plánováno na r.]</em>)</li>
+                <ul>
+                    <li>stačilo by klidně něco jako <code>FILTER;MATCH -1;k=7;c=2</code>…</li>
+                    <li>pro <span title="že by to matchovalo i na začátku věty">volitelně
+                        neexistující</span> levej kontext třeba <code>MATCH -1?;k=7;c=6</code>
+                        nebo <code>MATCH? -1</code>, je to jedno</li>
+                    <li>napadá mě i <span title="inspirace CQL?">obecně</span> <code title="kdekoli před">MATCH
+                        -</code>, <code>MATCH +</code>, <code>MATCH -1 -2</code>, vždycky ale radši bez
+                        <code title="když už jsem zmínil CQL">KWIC</code></li>
+                    <li>a samozřejmě <code>!MATCH</code>/<code>NOMATCH</code></li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr id="strucne-trpny-pricesti2">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=5;m=N;SET;k=2;c=1;d=1;DEL;a;m;COMMON;id=trpny-pricesti2">trpný příčestí</a> → <code title="bez vidu (a)">k2c1d1</code><br>
+            🎬 <a href="enqueue:trpny-pricesti2.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:trpny-pricesti2.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/trpny-pricesti2">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/trpny-pricesti2/20161019-080236/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#trpny-pricesti2">komentář</a></td>
+    </tr><!-- id=trpny-pricesti2 -->
+    <tr id="strucne-doznackovani-tj-napr2-r2-trpny-pricesti2">
+        <td>🏗 doznačkování + <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=tj\.;k=\?;SET;k=8;x=C;z=A;FILTER;MATCH;lc=např\.;k=6;SET;z=A;FILTER;MATCH;lc=např\.;k=\?;SET;k=6;z=A;FILTER;MATCH;lc=r\.;k=1;z=A;SET;g=I;FILTER;MATCH;lc=r\.;k=\?;SET;k=1;g=I;z=A;FILTER;MATCH;k=5;m=N;SET;k=2;c=1;d=1;DEL;a;m;COMMON;id=doznackovani-tj-napr2-r2-trpny-pricesti2">trpný příčestí</a><br>
+            🎬 <a href="enqueue:doznackovani-tj-napr2-r2-trpny-pricesti2.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:doznackovani-tj-napr2-r2-trpny-pricesti2.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/doznackovani-tj-napr2-r2-trpny-pricesti2/20161112-031021/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/doznackovani-tj-napr2-r2-trpny-pricesti2/20161019-101302/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#doznackovani-tj-napr2-r2-trpny-pricesti2">komentář</a></td>
+    </tr><!-- id=doznackovani-tj-napr2-r2-trpny-pricesti2 -->
+    <tr>
+        <td colspan="3">
+            <ul>
+                <li>pouštím s tím teď <em title="vykleštěný nebo radši vyčištěný?">vyházený</em>
+                    vyhodnocení</li>
+            </ul>
+        </td>
+    </tr>
+    <tr id="strucne-by-aby-kdyby-bez-cisla">
+        <td>🏗 zrušení <code>n[SP]</code> u <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=Y;n=[SP];p=3;m=C;DEL;n;COMMON;id=by-aby-kdyby-bez-cisla"><em>by, aby, kdyby</em></a><br>
+            🎬 <a href="enqueue:by-aby-kdyby-bez-cisla.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:by-aby-kdyby-bez-cisla.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/by-aby-kdyby-bez-cisla">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/by-aby-kdyby-bez-cisla/20161019-184737/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#by-aby-kdyby-bez-cisla">komentář</a></td>
+    </tr><!-- id=by-aby-kdyby-bez-cisla -->
+    <tr id="strucne-milos-tedy-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=tedy;k=8;x=C;SET;k=9;DEL;x;COMMON;id=milos-tedy-k9"><em>tedy</em></a> → <code title="Miloš a Pary chtěj">k9</code><br>
+            🎬 <a href="enqueue:milos-tedy-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:milos-tedy-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/milos-tedy-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/milos-tedy-k9/20161019-175832/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#milos-tedy-k9">komentář</a></td>
+    </tr><!-- id=milos-tedy-k9 -->
+    <tr id="strucne-tedy-k8xC">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=tedy;k=9;SET;k=8;x=C;COMMON;id=tedy-k8xC"><em>tedy</em></a> → <code>k8xC</code><br>
+            🎬 <a href="enqueue:tedy-k8xC.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:tedy-k8xC.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/tedy-k8xC">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/tedy-k8xC/20161019-180950/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#tedy-k8xC">komentář</a></td>
+    </tr><!-- id=tedy-k8xC -->
+    <tr id="strucne-milos-ovsem-k8">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=ovšem;k=9;SET;k=8;COMMON;id=milos-ovsem-k8"><em>ovšem</em></a> → <code title="Miloš a Pary chtěj">k8</code><br>
+            🎬 <a href="enqueue:milos-ovsem-k8.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:milos-ovsem-k8.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/milos-ovsem-k8">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/milos-ovsem-k8/20161019-233132/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#milos-ovsem-k8">komentář</a></td>
+    </tr><!-- id=milos-ovsem-k8 -->
+    <tr>
+        <td colspan="3">
+            <ul>
+                <li>„<strong>ovšem</strong>“ (i „ovšemže“) je v mém DESAMu vždy <code>k9</code></li>
+                <li>proč proboha chcete <code>k8</code>, co to je za spojku?</li>
+            </ul>
+        </td>
+    </tr>
+    <tr id="strucne-milos-take-k6">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=tak[yé];k=9;SET;k=6;COMMON;id=milos-take-k6">milos-take-k6<br>
+            🎬 <a href="enqueue:milos-take-k6.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:milos-take-k6.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/milos-take-k6">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/milos-take-k6/20161019-234112/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#milos-take-k6">komentář</a></td>
+    </tr><!-- id=milos-take-k6 -->
+    <tr id="strucne-take-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=tak[yé];k=9;SET;k=6;e=A;d=1;COMMON;id=take-k6eAd1">take-k6eAd1<br>
+            🎬 <a href="enqueue:take-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:take-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/take-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/take-k6eAd1/20161019-235054/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#take-k6eAd1">komentář</a></td>
+    </tr><!-- id=take-k6eAd1 -->
+    <tr id="strucne-jako-k8xS-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=jako;k=8;x=C;SET;x=S;COMMON;id=jako-k8xS-k9">jako-k8xS-k9<br>
+            🎬 <a href="enqueue:jako-k8xS-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jako-k8xS-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jako-k8xS-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jako-k8xS-k9/20161020-203615/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jako-k8xS-k9">komentář</a></td>
+    </tr><!-- id=jako-k8xS-k9 -->
+    <tr id="strucne-jako-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=jako;k=8;SET;k=9;DEL;x;COMMON;id=jako-k9">jako-k9<br>
+            🎬 <a href="enqueue:jako-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jako-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jako-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jako-k9/20161020-222215/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jako-k9">komentář</a></td>
+    </tr><!-- id=jako-k9 -->
+    <tr id="strucne-jako-k8xC">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=jako;k=8;x=S;SET;x=C;FILTER;MATCH;lc=jako;k=9;SET;k=8;x=C;COMMON;id=jako-k8xC">jako-k8xC<br>
+            🎬 <a href="enqueue:jako-k8xC.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jako-k8xC.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jako-k8xC">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jako-k8xC/20161020-224729/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jako-k8xC">komentář</a></td>
+    </tr><!-- id=jako-k8xC -->
+    <tr id="strucne-jako-k8xS">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=jako;k=8;x=C;SET;x=S;FILTER;MATCH;lc=jako;k=9;SET;k=8;x=S;COMMON;id=jako-k8xS">jako-k8xS<br>
+            🎬 <a href="enqueue:jako-k8xS.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jako-k8xS.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jako-k8xS">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jako-k8xS/20161020-225713/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jako-k8xS">komentář</a></td>
+    </tr><!-- id=jako-k8xS -->
+    <tr id="strucne-i-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;lc=i;k=8;x=C;SET;k=9;DEL;x;COMMON;id=i-k9">i-k9<br>
+            🎬 <a href="enqueue:i-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:i-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/i-k9/20161023-011956/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/i-k9">Aurora</a></td>
+        <td>❓ <a href="text.html#i-k9">komentář</a></td>
+    </tr><!-- id=i-k9 -->
+    <tr>
+        <th>vygenerovaný k6/k9</th>
+    </tr>
+    <tr id="strucne-prostě-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=prostě;SET;k=9;DEL;d;e;COMMON;id=prostě-k6eAd1-k9">prostě-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:prostě-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:prostě-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/prostě-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/prostě-k6eAd1-k9/20161024-154437/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#prostě-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=prostě-k6eAd1-k9 -->
+    <tr id="strucne-prostě-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=prostě;SET;d=1;e=A;k=6;COMMON;id=prostě-k9-k6eAd1">prostě-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:prostě-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:prostě-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/prostě-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/prostě-k9-k6eAd1/20161024-155419/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#prostě-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=prostě-k9-k6eAd1 -->
+    <tr id="strucne-ještě-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=ještě;SET;k=9;DEL;d;e;COMMON;id=ještě-k6eAd1-k9">ještě-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:ještě-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:ještě-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/ještě-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/ještě-k6eAd1-k9/20161024-130651/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#ještě-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=ještě-k6eAd1-k9 -->
+    <tr id="strucne-ještě-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=ještě;SET;d=1;e=A;k=6;COMMON;id=ještě-k9-k6eAd1">ještě-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:ještě-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:ještě-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/ještě-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/ještě-k9-k6eAd1/20161024-131646/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#ještě-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=ještě-k9-k6eAd1 -->
+    <tr id="strucne-až-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=až;SET;k=9;DEL;d;e;COMMON;id=až-k6eAd1-k9">až-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:až-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:až-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/až-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/až-k6eAd1-k9/20161024-120743/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#až-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=až-k6eAd1-k9 -->
+    <tr id="strucne-až-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=až;SET;d=1;e=A;k=6;COMMON;id=až-k9-k6eAd1">až-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:až-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:až-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/až-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/až-k9-k6eAd1/20161024-121742/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#až-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=až-k9-k6eAd1 -->
+    <tr id="strucne-jenom-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=jenom;SET;k=9;DEL;d;e;COMMON;id=jenom-k6eAd1-k9">jenom-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:jenom-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jenom-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jenom-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jenom-k6eAd1-k9/20161024-160403/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jenom-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=jenom-k6eAd1-k9 -->
+    <tr id="strucne-jenom-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=jenom;SET;d=1;e=A;k=6;COMMON;id=jenom-k9-k6eAd1">jenom-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:jenom-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jenom-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jenom-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jenom-k9-k6eAd1/20161024-120139/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jenom-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=jenom-k9-k6eAd1 -->
+    <tr id="strucne-jasně-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=jasně;SET;k=9;DEL;d;e;COMMON;id=jasně-k6eAd1-k9">jasně-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:jasně-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jasně-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jasně-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jasně-k6eAd1-k9/20161024-132640/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jasně-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=jasně-k6eAd1-k9 -->
+    <tr id="strucne-jasně-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=jasně;SET;d=1;e=A;k=6;COMMON;id=jasně-k9-k6eAd1">jasně-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:jasně-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jasně-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jasně-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jasně-k9-k6eAd1/20161024-133634/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jasně-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=jasně-k9-k6eAd1 -->
+    <tr id="strucne-především-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=především;SET;k=9;DEL;d;e;COMMON;id=především-k6eAd1-k9">především-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:především-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:především-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/především-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/především-k6eAd1-k9/20161024-144600/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#především-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=především-k6eAd1-k9 -->
+    <tr id="strucne-především-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=především;SET;d=1;e=A;k=6;COMMON;id=především-k9-k6eAd1">především-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:především-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:především-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/především-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/především-k9-k6eAd1/20161024-145542/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#především-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=především-k9-k6eAd1 -->
+    <tr id="strucne-už-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=už;SET;k=9;DEL;d;e;COMMON;id=už-k6eAd1-k9">už-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:už-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:už-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/už-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/už-k6eAd1-k9/20161024-152459/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#už-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=už-k6eAd1-k9 -->
+    <tr id="strucne-už-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=už;SET;d=1;e=A;k=6;COMMON;id=už-k9-k6eAd1">už-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:už-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:už-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/už-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/už-k9-k6eAd1/20161024-153446/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#už-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=už-k9-k6eAd1 -->
+    <tr id="strucne-bohužel-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=bohužel;SET;k=9;DEL;d;e;COMMON;id=bohužel-k6eAd1-k9">bohužel-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:bohužel-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:bohužel-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/bohužel-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/bohužel-k6eAd1-k9/20161024-165413/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#bohužel-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=bohužel-k6eAd1-k9 -->
+    <tr id="strucne-bohužel-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=bohužel;SET;d=1;e=A;k=6;COMMON;id=bohužel-k9-k6eAd1">bohužel-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:bohužel-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:bohužel-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/bohužel-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/bohužel-k9-k6eAd1/20161024-170421/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#bohužel-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=bohužel-k9-k6eAd1 -->
+    <tr id="strucne-většinou-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=většinou;SET;k=9;DEL;d;e;COMMON;id=většinou-k6eAd1-k9">většinou-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:většinou-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:většinou-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/většinou-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/většinou-k6eAd1-k9/20161024-163356/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#většinou-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=většinou-k6eAd1-k9 -->
+    <tr id="strucne-většinou-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=většinou;SET;d=1;e=A;k=6;COMMON;id=většinou-k9-k6eAd1">většinou-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:většinou-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:většinou-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/většinou-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/většinou-k9-k6eAd1/20161024-164406/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#většinou-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=většinou-k9-k6eAd1 -->
+    <tr id="strucne-potom-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=potom;SET;k=9;DEL;d;e;COMMON;id=potom-k6eAd1-k9">potom-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:potom-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:potom-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/potom-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/potom-k6eAd1-k9/20161024-122725/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#potom-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=potom-k6eAd1-k9 -->
+    <tr id="strucne-potom-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=potom;SET;d=1;e=A;k=6;COMMON;id=potom-k9-k6eAd1">potom-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:potom-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:potom-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/potom-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/potom-k9-k6eAd1/20161024-123707/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#potom-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=potom-k9-k6eAd1 -->
+    <tr id="strucne-jen-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=jen;SET;k=9;DEL;d;e;COMMON;id=jen-k6eAd1-k9">jen-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:jen-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jen-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jen-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jen-k6eAd1-k9/20161024-134631/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jen-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=jen-k6eAd1-k9 -->
+    <tr id="strucne-jen-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=jen;SET;d=1;e=A;k=6;COMMON;id=jen-k9-k6eAd1">jen-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:jen-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jen-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jen-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jen-k9-k6eAd1/20161024-135634/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jen-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=jen-k9-k6eAd1 -->
+    <tr id="strucne-již-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=již;SET;k=9;DEL;d;e;COMMON;id=již-k6eAd1-k9">již-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:již-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:již-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/již-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/již-k6eAd1-k9/20161024-124655/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#již-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=již-k6eAd1-k9 -->
+    <tr id="strucne-již-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=již;SET;d=1;e=A;k=6;COMMON;id=již-k9-k6eAd1">již-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:již-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:již-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/již-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/již-k9-k6eAd1/20161024-125651/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#již-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=již-k9-k6eAd1 -->
+    <tr id="strucne-zvláště-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=zvláště;SET;k=9;DEL;d;e;COMMON;id=zvláště-k6eAd1-k9">zvláště-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:zvláště-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:zvláště-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/zvláště-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/zvláště-k6eAd1-k9/20161024-171423/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#zvláště-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=zvláště-k6eAd1-k9 -->
+    <tr id="strucne-zvláště-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=zvláště;SET;d=1;e=A;k=6;COMMON;id=zvláště-k9-k6eAd1">zvláště-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:zvláště-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:zvláště-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/zvláště-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/zvláště-k9-k6eAd1/20161024-172420/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#zvláště-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=zvláště-k9-k6eAd1 -->
+    <tr id="strucne-víceméně-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=víceméně;SET;k=9;DEL;d;e;COMMON;id=víceméně-k6eAd1-k9">víceméně-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:víceméně-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:víceméně-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/víceméně-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/víceméně-k6eAd1-k9/20161024-161350/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#víceméně-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=víceméně-k6eAd1-k9 -->
+    <tr id="strucne-víceméně-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=víceméně;SET;d=1;e=A;k=6;COMMON;id=víceméně-k9-k6eAd1">víceméně-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:víceméně-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:víceméně-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/víceméně-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/víceméně-k9-k6eAd1/20161024-162404/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#víceméně-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=víceméně-k9-k6eAd1 -->
+    <tr id="strucne-také-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=také;SET;k=9;DEL;d;e;COMMON;id=také-k6eAd1-k9">také-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:také-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:také-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/také-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/také-k6eAd1-k9/20161024-142610/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#také-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=také-k6eAd1-k9 -->
+    <tr id="strucne-také-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=také;SET;d=1;e=A;k=6;COMMON;id=také-k9-k6eAd1">také-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:také-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:také-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/také-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/také-k9-k6eAd1/20161024-143602/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#také-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=také-k9-k6eAd1 -->
+    <tr id="strucne-jistě-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=jistě;SET;k=9;DEL;d;e;COMMON;id=jistě-k6eAd1-k9">jistě-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:jistě-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jistě-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jistě-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jistě-k6eAd1-k9/20161024-140630/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jistě-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=jistě-k6eAd1-k9 -->
+    <tr id="strucne-jistě-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=jistě;SET;d=1;e=A;k=6;COMMON;id=jistě-k9-k6eAd1">jistě-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:jistě-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:jistě-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/jistě-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/jistě-k9-k6eAd1/20161024-141619/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#jistě-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=jistě-k9-k6eAd1 -->
+    <tr id="strucne-právě-k6eAd1-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;d=1;e=A;k=6;lc=právě;SET;k=9;DEL;d;e;COMMON;id=právě-k6eAd1-k9">právě-k6eAd1-k9</a><br>
+            🎬 <a href="enqueue:právě-k6eAd1-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:právě-k6eAd1-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/právě-k6eAd1-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/právě-k6eAd1-k9/20161024-150525/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#právě-k6eAd1-k9">komentář</a></td>
+    </tr><!-- id=právě-k6eAd1-k9 -->
+    <tr id="strucne-právě-k9-k6eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=9;lc=právě;SET;d=1;e=A;k=6;COMMON;id=právě-k9-k6eAd1">právě-k9-k6eAd1</a><br>
+            🎬 <a href="enqueue:právě-k9-k6eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:právě-k9-k6eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/právě-k9-k6eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/právě-k9-k6eAd1/20161024-151508/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#právě-k9-k6eAd1">komentář</a></td>
+    </tr><!-- id=právě-k9-k6eAd1 -->
+    <tr id="strucne-cardinals">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;k=4;x=C;SET;k=1;COMMON;id=cardinals">cardinals<br>
+            🎬 <a href="enqueue:cardinals.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:cardinals.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/cardinals">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/cardinals/20161108-155407/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#cardinals">komentář</a></td>
+    </tr><!-- id=cardinals -->
+    <tr id="strucne-remove-zA-new">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;z=A;DEL;z;COMMON;id=remove-zA-new">remove-zA-new<br>
+            🎬 <a href="enqueue:remove-zA-new.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:remove-zA-new.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/remove-zA-new">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/remove-zA-new/20161109-121514/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#remove-zA-new">komentář</a></td>
+    </tr><!-- id=remove-zA-new -->
+    <tr id="strucne-revert-to-kA-new">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;FILTER;MATCH;z=A;SET;k=A;DEL;z;g;n;c;d;x;y;a;p;m;e;COMMON;id=revert-to-kA-new">revert-to-kA-new<br>
+            🎬 <a href="enqueue:revert-to-kA-new.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:revert-to-kA-new.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/revert-to-kA-new">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/revert-to-kA-new/20161109-122527/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#revert-to-kA-new">komentář</a></td>
+    </tr><!-- id=revert-to-kA-new -->
+    <tr>
+        <th colspan="2">vygenerovaný <code>punct</code></th>
+    </tr>
+    <tr id="strucne-punct-hyphen">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;EVALUATE;TRAINING_TESTING;bootstrap=no;FILTER;silent=yes;MATCH;k=\?;lc=-;SET;tag=kIx~;COMMON;id=punct-hyphen">punct-hyphen</a><br>
+            🎬 <a href="enqueue:punct-hyphen.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:punct-hyphen.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/punct-hyphen/20161120-164534/0-75_75-100/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/punct-hyphen/20161121-141757/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#punct-hyphen">komentář</a></td>
+    </tr><!-- id=punct-hyphen -->
+    <tr>
+        <th colspan="2">vygenerovaný <code>chains</code> (⇒ 2nd baseline)</th>
+        <td>srovnávaj proti předchozímu</td>
+    </tr>
+    <tr id="strucne-hyphen">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;COMMON;id=hyphen;corpus-portions=quarters">hyphen</a><br>
+            🎬 <a href="enqueue:hyphen.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:hyphen.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/hyphen/20161121-135520/0-50,75-100_50-75/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/hyphen/20161121-150706/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#hyphen">komentář</a></td>
+    </tr><!-- id=hyphen -->
+    <tr id="strucne-hyphen-full-stop">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;COMMON;id=hyphen-full-stop;corpus-portions=quarters">hyphen-full-stop</a><br>
+            🎬 <a href="enqueue:hyphen-full-stop.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:hyphen-full-stop.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/hyphen-full-stop/20161121-043820/0-75_75-100/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/hyphen-full-stop/20161121-153216/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#hyphen-full-stop">komentář</a></td>
+    </tr><!-- id=hyphen-full-stop -->
+    <tr id="strucne-hyphen-full-stop-nejvic">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;d=1;lc=nejvíce?;SET;d=3;COMMON;id=hyphen-full-stop-nejvic;corpus-portions=quarters">hyphen-full-stop-nejvic</a><br>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/hyphen-full-stop-nejvic">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/hyphen-full-stop-nejvic/20161121-191146/0-50,75-100_50-75/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#hyphen-full-stop-nejvic">komentář</a></td>
+    </tr><!-- id=hyphen-full-stop-nejvic -->
+    <tr id="strucne-hyphen-full-stop-nejvic-by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;d=1;lc=nejvíce?;SET;d=3;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;d=1;lc=nejvíce?;SET;d=3;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=hyphen-full-stop-nejvic-by;corpus-portions=quarters">hyphen-full-stop-nejvic-by</a><br>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic-by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic-by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/hyphen-full-stop-nejvic-by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/hyphen-full-stop-nejvic-by/20161121-210308/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#hyphen-full-stop-nejvic-by">komentář</a></td>
+    </tr><!-- id=hyphen-full-stop-nejvic-by -->
+    <tr id="strucne-hyphen-full-stop-nejvic-by-rok">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;d=1;lc=nejvíce?;SET;d=3;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;d=1;lc=nejvíce?;SET;d=3;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;FILTER;alias=rok;MATCH;k=\?;lc=r\.;SET;g=I;k=1;COMMON;id=hyphen-full-stop-nejvic-by-rok;corpus-portions=quarters">hyphen-full-stop-nejvic-by-rok</a><br>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic-by-rok.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic-by-rok.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/hyphen-full-stop-nejvic-by-rok">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/hyphen-full-stop-nejvic-by-rok/20161121-212902/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#hyphen-full-stop-nejvic-by-rok">komentář</a></td>
+    </tr><!-- id=hyphen-full-stop-nejvic-by-rok -->
+    <tr id="strucne-hyphen-full-stop-nejvic-by-r.">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;d=1;lc=nejvíce?;SET;d=3;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;k=\?;word=-;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;k=\?;word=\.;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;d=1;lc=nejvíce?;SET;d=3;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;FILTER;alias=r.;MATCH;k=\?;lc=r\.;SET;g=I;k=1;z=A;COMMON;id=hyphen-full-stop-nejvic-by-r.;corpus-portions=quarters">hyphen-full-stop-nejvic-by-r.</a><br>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic-by-r..sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:hyphen-full-stop-nejvic-by-r..sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/hyphen-full-stop-nejvic-by-r.">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/hyphen-full-stop-nejvic-by-r.?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#hyphen-full-stop-nejvic-by-r.">komentář</a></td>
+    </tr><!-- id=hyphen-full-stop-nejvic-by-r. -->
+    <tr>
+        <th colspan="2"><code>chains</code> (⇒ 2nd baseline)</th>
+        <td>srovnávaj proti baseline <code>unmodified</code></td>
+    </tr>
+    <tr id="strucne-unmodified-vs-hyphen">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;word=-;k=\?;SET;tag=kIx~;COMMON;id=unmodified-vs-hyphen;corpus-portions=quarters;external-reference=baseline-unmodified">unmodified-vs-hyphen</a><br>
+            🎬 <a href="enqueue:unmodified-vs-hyphen.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-vs-hyphen.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-vs-hyphen/20161122-033653/0-50,75-100_50-75/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-vs-hyphen/20161122-034649/0-50,75-100_50-75/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-vs-hyphen">komentář</a></td>
+    </tr><!-- id=unmodified-vs-hyphen -->
+    <tr id="strucne-unmodified-vs-hyphen-full-stop">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;COMMON;id=unmodified-vs-hyphen-full-stop;corpus-portions=quarters;external-reference=baseline-unmodified">unmodified-vs-hyphen-full-stop</a><br>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-vs-hyphen-full-stop">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-vs-hyphen-full-stop/20161122-040025/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-vs-hyphen-full-stop">komentář</a></td>
+    </tr><!-- id=unmodified-vs-hyphen-full-stop -->
+    <tr id="strucne-unmodified-vs-hyphen-full-stop-nejvic">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;lc=nejvíce?;d=1;SET;d=3;COMMON;id=unmodified-vs-hyphen-full-stop-nejvic;corpus-portions=quarters;external-reference=baseline-unmodified">unmodified-vs-hyphen-full-stop-nejvic</a><br>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop-nejvic.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop-nejvic.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-vs-hyphen-full-stop-nejvic">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-vs-hyphen-full-stop-nejvic/20161122-041453/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-vs-hyphen-full-stop-nejvic">komentář</a></td>
+    </tr><!-- id=unmodified-vs-hyphen-full-stop-nejvic -->
+    <tr id="strucne-unmodified-vs-hyphen-full-stop-nejvic-by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;lc=nejvíce?;d=1;SET;d=3;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=unmodified-vs-hyphen-full-stop-nejvic-by;corpus-portions=quarters;external-reference=baseline-unmodified">unmodified-vs-hyphen-full-stop-nejvic-by</a><br>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop-nejvic-by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop-nejvic-by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-vs-hyphen-full-stop-nejvic-by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-vs-hyphen-full-stop-nejvic-by/20161122-042921/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-vs-hyphen-full-stop-nejvic-by">komentář</a></td>
+    </tr><!-- id=unmodified-vs-hyphen-full-stop-nejvic-by -->
+    <tr id="strucne-unmodified-vs-hyphen-full-stop-nejvic-by-r.">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;FILTER;alias=hyphen;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=nejvic;MATCH;lc=nejvíce?;d=1;SET;d=3;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;FILTER;alias=r.;MATCH;lc=r\.;k=\?;SET;k=1;g=I;z=A;COMMON;id=unmodified-vs-hyphen-full-stop-nejvic-by-r.;corpus-portions=quarters;external-reference=baseline-unmodified">unmodified-vs-hyphen-full-stop-nejvic-by-r.</a><br>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop-nejvic-by-r..sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-vs-hyphen-full-stop-nejvic-by-r..sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-vs-hyphen-full-stop-nejvic-by-r./20161122-181853/0-50,75-100_50-75/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-vs-hyphen-full-stop-nejvic-by-r./20161122-044359/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-vs-hyphen-full-stop-nejvic-by-r.">komentář</a></td>
+    </tr><!-- id=unmodified-vs-hyphen-full-stop-nejvic-by-r. -->
+    <tr>
+        <td colspan="3"><ul>
+            <li><a href="tagsetbench:compare?MEASUREMENTS;unmodified-vs-*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-1.html;FOLD;25-100_0-25">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-1.html"><span title="vyhodnocení">srovnání</span> 1. čtvrtiny</a></li>
+            <li><a href="tagsetbench:compare?MEASUREMENTS;unmodified-vs-*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-2.html;FOLD;0-25,50-100_25-50">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-2.html"><span title="vyhodnocení">srovnání</span> 2. čtvrtiny</a></li>
+            <li><a href="tagsetbench:compare?MEASUREMENTS;unmodified-vs-*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-3.html;FOLD;0-50,75-100_50-75">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-3.html"><span title="vyhodnocení">srovnání</span> 3. čtvrtiny</a></li>
+            <li><a href="tagsetbench:compare?MEASUREMENTS;unmodified-vs-*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-4.html;FOLD;0-75_75-100">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-4.html"><span title="vyhodnocení">srovnání</span> 4. čtvrtiny</a></li>
+            <li>🔨 <a href="spooler:list-queue?aurora">vypsat aktuální frontu na Auroře</a></li>
+        </ul></td>
+    </tr>
+    <tr>
+        <th colspan="2"><code>isolated</code> (⇒ 2nd baseline)</th>
+        <td>srovnávaj proti baseline <code>unmodified</code></td>
+    </tr>
+    <tr id="strucne-unmodified_vs_hyphen">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=hyphen;MATCH;word=-;k=\?;SET;tag=kIx~;COMMON;id=unmodified_vs_hyphen;corpus-portions=quarters">unmodified_vs_hyphen</a><br>
+            🎬 <a href="enqueue:unmodified_vs_hyphen.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_hyphen.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_hyphen">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_hyphen/20161125-084030/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_hyphen">komentář</a></td>
+    </tr><!-- id=unmodified_vs_hyphen -->
+    <tr id="strucne-unmodified_vs_full-stop">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;COMMON;id=unmodified_vs_full-stop;corpus-portions=quarters">unmodified_vs_full-stop</a><br>
+            🎬 <a href="enqueue:unmodified_vs_full-stop.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_full-stop.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_full-stop">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_full-stop/20161123-075619/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_full-stop">komentář</a></td>
+    </tr><!-- id=unmodified_vs_full-stop -->
+    <tr id="strucne-unmodified_vs_nejvic">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=nejvic;MATCH;lc=nejvíce?;d=1;SET;d=3;COMMON;id=unmodified_vs_nejvic;corpus-portions=quarters">unmodified_vs_nejvic</a><br>
+            🎬 <a href="enqueue:unmodified_vs_nejvic.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_nejvic.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_nejvic">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_nejvic/20161122-222125/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_nejvic">komentář</a></td>
+    </tr><!-- id=unmodified_vs_nejvic -->
+    <tr id="strucne-unmodified_vs_by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=unmodified_vs_by;corpus-portions=quarters">unmodified_vs_by</a><br>
+            🎬 <a href="enqueue:unmodified_vs_by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_by/20161123-050800/0-75_75-100/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_by/20161123-083240/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_by">komentář</a></td>
+    </tr><!-- id=unmodified_vs_by -->
+    <tr>
+        <td colspan="3"><ul>
+            <li>to, že se <a href="http://localhost/measurements/unmodified__vs__unmodified_vs_by/20161125-064340/compared_parts.html">skoro
+                nemění</a> výsledky v nezměněných kategoriích <mark>dost nabourává</mark>
+                mou naivní tezi, že úpravy budou mít nějakej super vliv na kontext…</li>
+            <ul>
+                <li>i když možná to je tím, že tahle úprava jen odstraňuje číslo
+                    a nepřidává/nevylepšuje informaci</li>
+                <li>prostě asi si ten tagger fakt pamatuje ke každýmu slovu jeho
+                    možný značky (a řeší spíš je)</li>
+            </ul>
+        </ul></td>
+    </tr>
+    <tr id="strucne-unmodified_vs_r.">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=r.;MATCH;lc=r\.;k=\?;SET;k=1;g=I;z=A;COMMON;id=unmodified_vs_r.;corpus-portions=quarters">unmodified_vs_r.</a> (<mark>půjdu</mark> na <em>tj.</em>)<br>
+            🎬 <a href="enqueue:unmodified_vs_r..sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_r..sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_r./20161123-035938/0-25,50-100_25-50/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_r.?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_r.">komentář</a></td>
+    </tr><!-- id=unmodified_vs_r. -->
+    <tr>
+        <td colspan="3"><ul>
+            <li>ta tečka nevypadá vůbec dobře</li>
+            <li><a href="tagsetbench:compare?host=aurora;MEASUREMENTS;unmodified_vs_*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-isolated-1.html;FOLD;25-100_0-25">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-isolated-1.html"><span title="vyhodnocení">srovnání</span> 1. čtvrtiny</a></li>
+            <li><a href="tagsetbench:compare?host=aurora;MEASUREMENTS;unmodified_vs_*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-isolated-2.html;FOLD;0-25,50-100_25-50">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-isolated-2.html"><span title="vyhodnocení">srovnání</span> 2. čtvrtiny</a></li>
+            <li><a href="tagsetbench:compare?host=aurora;MEASUREMENTS;unmodified_vs_*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-isolated-3.html;FOLD;0-50,75-100_50-75">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-isolated-3.html"><span title="vyhodnocení">srovnání</span> 3. čtvrtiny</a></li>
+            <li><a href="tagsetbench:compare?host=aurora;MEASUREMENTS;unmodified_vs_*;merged=/home/Diplomka/working_dir/ad-hoc/unmodified-isolated-4.html;FOLD;0-75_75-100">vygenerovat</a> 📊 <a href="/measurements/ad-hoc/unmodified-isolated-4.html"><span title="vyhodnocení">srovnání</span> 4. čtvrtiny</a></li>
+            <li>🔨 <a href="spooler:list-queue?aurora">vypsat aktuální frontu na Auroře</a></li>
+            <li>(vygenerovat) hezčí výsledky: <code>rm -f */comparison-summary*; make -j4</code></li>
+        </ul></td>
+    </tr>
+    <tr id="strucne-unmodified_vs_r.__vs__unmodified_vs_by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified_vs_r.;external-side=compared;EVALUATE;external=unmodified_vs_by;external-side=compared;COMMON;id=unmodified_vs_r.__vs__unmodified_vs_by;corpus-portions=quarters">unmodified_vs_r.__vs__unmodified_vs_by</a><br>
+            🎬 <a href="enqueue:unmodified_vs_r.__vs__unmodified_vs_by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_r.__vs__unmodified_vs_by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_r.__vs__unmodified_vs_by/20161123-052449/25-100_0-25/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_r.__vs__unmodified_vs_by?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_r.__vs__unmodified_vs_by">komentář</a></td>
+    </tr><!-- id=unmodified_vs_r.__vs__unmodified_vs_by -->
+    <tr id="strucne-unmodified__vs__unmodified_vs_by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;external-side=reference;EVALUATE;external=unmodified_vs_by;external-side=compared;COMMON;id=unmodified__vs__unmodified_vs_by;corpus-portions=quarters">unmodified__vs__unmodified_vs_by</a><br>
+            🎬 <a href="enqueue:unmodified__vs__unmodified_vs_by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified__vs__unmodified_vs_by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified__vs__unmodified_vs_by/20161127-195108/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified__vs__unmodified_vs_by/20161123-081500/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified__vs__unmodified_vs_by">komentář</a></td>
+    </tr><!-- id=unmodified__vs__unmodified_vs_by -->
+    <tr>
+        <td colspan="3"><ul>
+            <li><a href="tagsetbench:compare?host=localhost;MEASUREMENT;unmodified__vs__unmodified_vs_by;merged=/home/Diplomka/working_dir/unmodified__vs__unmodified_vs_by/20161123-054511/srovnání.html;FOLDS;25-100_0-25;0-25,50-100_25-50;0-50,75-100_50-75;0-75_75-100">vygenerovat</a> 📊 <a href="/measurements/unmodified__vs__unmodified_vs_by/20161123-054511/srovnání.html">srovnání všech čtvrtin</a></li>
+            <li><a href="tagsetbench:compare?host=aurora;MEASUREMENT;unmodified_vs_by;merged=/home/Diplomka/working_dir/unmodified_vs_by/20161123-050800/srovnání.html;FOLDS;25-100_0-25;0-25,50-100_25-50;0-50,75-100_50-75;0-75_75-100">vygenerovat</a> 📊 <a href="/measurements/unmodified_vs_by/20161123-050800/srovnání.html">srovnání všech čtvrtin</a> (teď z Aurory)</li>
+        </ul></td>
+    </tr>
+    <tr>
+        <th colspan="2"><code>čísla (⇒ taky 2nd baseline)</th>
+        <td>míchám tu izolovaný i řetězec</td>
+    </tr>
+    <tr id="strucne-unmodified_vs_ordinals">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=ordinals;MATCH;word=\d+\.;k=\?;SET;k=4;x=O;COMMON;id=unmodified_vs_ordinals;corpus-portions=quarters">unmodified_vs_ordinals</a><br>
+            🎬 <a href="enqueue:unmodified_vs_ordinals.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_ordinals.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_ordinals/20161123-154919/25-100_0-25/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_ordinals?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_ordinals">komentář</a></td>
+    </tr><!-- id=unmodified_vs_ordinals -->
+    <tr id="strucne-unmodified_vs_cardinals">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=cardinals;MATCH;word=[0-9,.]*\d;k=\?;SET;k=4;x=C;COMMON;id=unmodified_vs_cardinals;corpus-portions=quarters">unmodified_vs_cardinals</a><br>
+            🎬 <a href="enqueue:unmodified_vs_cardinals.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_cardinals.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_cardinals/20161123-154836/0-25,50-100_25-50/">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_cardinals?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_cardinals">komentář</a></td>
+    </tr><!-- id=unmodified_vs_cardinals -->
+    <tr>
+        <td colspan="3"><ul>
+            <li><a href="tagsetbench:compare?host=localhost;MEASUREMENT;unmodified_vs_ordinals;merged=/home/Diplomka/working_dir/unmodified_vs_ordinals/20161123-154919/comparison.html;FOLDS;25-100_0-25;0-25,50-100_25-50;0-50,75-100_50-75;0-75_75-100">vygenerovat</a> 📊 <a href="/measurements/unmodified_vs_ordinals/20161123-154919/comparison.html">srovnání všech čtvrtin</a></li>
+            <li><a href="tagsetbench:compare?host=localhost;MEASUREMENT;unmodified_vs_ordinals;merged=/home/Diplomka/working_dir/unmodified_vs_ordinals/20161123-154919/25-100_0-25/comparison.html;FOLDS;25-100_0-25">vygenerovat</a> 📊 <a href="/measurements/unmodified_vs_ordinals/20161123-154919/25-100_0-25/comparison.html">srovnání první čtvrtiny</a></li>
+            <li>BTW, Je parle od Manau se dá docela rozumět</li>
+        </ul></td>
+    </tr>
+    <tr id="strucne-unmodified_vs_ordinals-cardinals">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=ordinals;MATCH;word=\d+\.;k=\?;SET;k=4;x=O;FILTER;alias=cardinals;MATCH;word=[0-9,.]*\d;k=\?;SET;k=4;x=C;COMMON;id=unmodified_vs_ordinals-cardinals;corpus-portions=quarters">unmodified_vs_ordinals-cardinals</a><br>
+            🎬 <a href="enqueue:unmodified_vs_ordinals-cardinals.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_ordinals-cardinals.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_ordinals-cardinals/20161124-225822/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_ordinals-cardinals/20161125-085227/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_ordinals-cardinals">komentář</a></td>
+    </tr><!-- id=unmodified_vs_ordinals-cardinals -->
+    <tr>
+        <td colspan="3"><ul>
+        </ul></td>
+    </tr>
+    <tr id="strucne-unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=sakumprask-k9;MATCH;lc=až|bohužel|jasně|jen|jenom|ještě|jistě|již|potom|prostě|právě|především|také|už|víceméně|většinou|zvláště;k=6;e=A;d=1;SET;k=9;DEL;e;d;COMMON;id=unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9;corpus-portions=quarters">unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9</a><br>
+            🎬 <a href="enqueue:unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9/20161125-025954/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9">komentář</a></td>
+    </tr><!-- id=unmodified_vs_až-bohužel-jasně-jen-jenom-ještě-jistě-již-potom-prostě-právě-především-také-už-víceméně-většinou-zvláště-k9 -->
+    <tr id="strucne-unmodified_vs_sakumprásk-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=sakumprásk-k9;MATCH;lc=a to|až|bohužel|co|hlavně|jak|jasně|jen|jenom|ještě|jistě|již|mimo jiné|mimochodem|možná|nakonec|opravdu|pak|potom|prostě|právě|především|rovněž|spíš|tak|taky|také|teprve|tu|též|třeba|už|vlastně|většinou|zrovna|zvláště|zvlášť;k=6;SET;k=9;DEL;e;d;y;t;x;COMMON;id=unmodified_vs_sakumprásk-k9;corpus-portions=quarters">unmodified_vs_sakumprásk-k9</a><br>
+            🎬 <a href="enqueue:unmodified_vs_sakumprásk-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_sakumprásk-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_sakumprásk-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_sakumprásk-k9/20161125-064027/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_sakumprásk-k9">komentář</a></td>
+    </tr><!-- id=unmodified_vs_sakumprásk-k9 -->
+    <tr>
+        <td colspan="3"><ul>
+            <li>„jak“ <a href="https://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_sakumpr%C3%A1sk-k9/20161125-043356/0-75_75-100/clustered-errors-listing.html#x.">začalo
+                kolísat</a> mezi <code>k8xS</code> a <code>k9</code></li>
+            <li>„tak“ by chtělo asi radši <code>k9xD</code>, protože <a href="https://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_sakumpr%C3%A1sk-k9/20161125-043356/0-75_75-100/clustered-errors-listing.html#unclustered">k němu
+                spěje</a> (úplně dole) – nebo vlastně nevim, možná to je <code>k6</code>?</li>
+            <li><strong>tohle je zajímavý!</strong> <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_sakumpr%C3%A1sk-k9/20161125-043356/compared_parts.html">přestalo
+                kolísat</a> <code>k6</code> s <code>k8</code> (asi protože toho <code>k6</code> hodně ubylo)
+                <table>
+                <tr><td>k6 ↔ k9</td><td><span title="0.498%">1211</span></td><td><span class="lowest"><span title="0.012%">28</span><br>-1183</span></td><td><span title="0.332%">809</span></td><td><span class="lowest"><span title="0.004%">9</span><br>-800</span></td><td><span title="0.398%">968</span></td><td><span class="lowest"><span title="0.013%">31</span><br>-937</span></td><td><span title="0.415%">1010</span></td><td><span class="lowest"><span title="0.008%">20</span><br>-990</span></td><td>k6 ↔ k9</td></tr>
+                <tr><td>k8 ↔ k6</td><td><span title="0.092%">225</span></td><td><span class="lowest"><span title="0.006%">14</span><br>-211</span></td><td><span title="0.084%">205</span></td><td><span class="lowest"><span title="0.004%">10</span><br>-195</span></td><td><span title="0.081%">196</span></td><td><span class="lowest"><span title="0.004%">10</span><br>-186</span></td><td><span title="0.072%">176</span></td><td><span class="lowest"><span title="0.006%">14</span><br>-162</span></td><td>k8 ↔ k6</td></tr>
+                </table>
+            </li>
+            <ul>
+                <li>u I. a IV. se zhoršil pád, ale co…</li>
+            </ul>
+        </ul></td>
+    </tr>
+    <tr id="strucne-unmodified_vs_inherit-case-from-preposition">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;name=inherit-case-from-preposition;COMMON;id=unmodified_vs_inherit-case-from-preposition;corpus-portions=quarters">unmodified_vs_inherit-case-from-preposition</a><br>
+            🎬 <a href="enqueue:unmodified_vs_inherit-case-from-preposition.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_inherit-case-from-preposition.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_inherit-case-from-preposition/20161125-064259/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_inherit-case-from-preposition">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_inherit-case-from-preposition">komentář</a></td>
+    </tr><!-- id=unmodified_vs_inherit-case-from-preposition -->
+    <tr id="strucne-unmodified__vs__unmodified_vs_r.">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;external-side=reference;EVALUATE;external=unmodified_vs_r.;external-side=compared;COMMON;id=unmodified__vs__unmodified_vs_r.;corpus-portions=quarters">unmodified__vs__unmodified_vs_r.</a><br>
+            🎬 <a href="enqueue:unmodified__vs__unmodified_vs_r..sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified__vs__unmodified_vs_r..sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified__vs__unmodified_vs_r./20161125-080019/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified__vs__unmodified_vs_r.">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified__vs__unmodified_vs_r.">komentář</a></td>
+    </tr><!-- id=unmodified__vs__unmodified_vs_r. -->
+    <tr id="strucne-unmodified_vs_majka-lexicon">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;COMMON;id=unmodified_vs_majka-lexicon;corpus-portions=quarters">unmodified_vs_majka-lexicon</a><br>
+            🎬 <a href="enqueue:unmodified_vs_majka-lexicon.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_majka-lexicon.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_majka-lexicon/20161127-153338/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_majka-lexicon/20161127-202149/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_majka-lexicon">komentář</a></td>
+    </tr><!-- id=unmodified_vs_majka-lexicon -->
+    <tr id="strucne-unmodified_vs_regenerated-wordclass-automaton">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-wordclass-automaton=tagsetbench/regenerated-wordclass.txt;COMMON;id=unmodified_vs_regenerated-wordclass-automaton;corpus-portions=first-quarter">unmodified_vs_regenerated-wordclass-automaton</a><br>
+            🎬 <a href="enqueue:unmodified_vs_regenerated-wordclass-automaton.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_regenerated-wordclass-automaton.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_regenerated-wordclass-automaton/20161127-030923/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_regenerated-wordclass-automaton">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_regenerated-wordclass-automaton">komentář</a></td>
+    </tr><!-- id=unmodified_vs_regenerated-wordclass-automaton -->
+    <tr id="strucne-unmodified_vs_wordclass-automaton-numbers">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-wordclass-automaton=tagsetbench/wordclass_automaton_numbers.txt;COMMON;id=unmodified_vs_wordclass-automaton-numbers;corpus-portions=first-quarter">unmodified_vs_wordclass-automaton-numbers</a><br>
+            🎬 <a href="enqueue:unmodified_vs_wordclass-automaton-numbers.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_wordclass-automaton-numbers.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_wordclass-automaton-numbers/20161127-041431/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_wordclass-automaton-numbers">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_wordclass-automaton-numbers">komentář</a></td>
+    </tr><!-- id=unmodified_vs_wordclass-automaton-numbers -->
+    <tr id="strucne-unmodified__vs__unmodified_vs_majka-lexicon">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;external-side=reference;EVALUATE;external=unmodified_vs_majka-lexicon;external-side=compared;COMMON;id=unmodified__vs__unmodified_vs_majka-lexicon;corpus-portions=quarters">unmodified__vs__unmodified_vs_majka-lexicon</a><br>
+            🎬 <a href="enqueue:unmodified__vs__unmodified_vs_majka-lexicon.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified__vs__unmodified_vs_majka-lexicon.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified__vs__unmodified_vs_majka-lexicon">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified__vs__unmodified_vs_majka-lexicon/20161129-125803/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified__vs__unmodified_vs_majka-lexicon">komentář</a></td>
+    </tr><!-- id=unmodified__vs__unmodified_vs_majka-lexicon -->
+    <tr id="strucne-unmodified_vs_passive-participles-to-adjectives">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives;MATCH;k=5;m=N;SET;k=2;c=1;d=1;DEL;a;m;COMMON;id=unmodified_vs_passive-participles-to-adjectives;corpus-portions=quarters">unmodified_vs_passive-participles-to-adjectives</a><br>
+            🎬 <a href="enqueue:unmodified_vs_passive-participles-to-adjectives.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_passive-participles-to-adjectives.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_passive-participles-to-adjectives">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_passive-participles-to-adjectives/20161129-122103/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_passive-participles-to-adjectives">komentář</a></td>
+    </tr><!-- id=unmodified_vs_passive-participles-to-adjectives -->
+    <tr id="strucne-unmodified_vs_passive-participles-to-adjectives-eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives-eAd1;MATCH;k=5;m=N;SET;k=2;c=1;e=A;d=1;DEL;a;m;COMMON;id=unmodified_vs_passive-participles-to-adjectives-eAd1;corpus-portions=quarters">unmodified_vs_passive-participles-to-adjectives-eAd1</a><br>
+            🎬 <a href="enqueue:unmodified_vs_passive-participles-to-adjectives-eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_passive-participles-to-adjectives-eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_passive-participles-to-adjectives-eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_passive-participles-to-adjectives-eAd1/20161129-124539/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_passive-participles-to-adjectives-eAd1">komentář</a></td>
+    </tr><!-- id=unmodified_vs_passive-participles-to-adjectives-eAd1 -->
+    <tr id="strucne-unmodified_vs_ordinals-to-adjectives-eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=ordinals-to-adjectives-eAd1;MATCH;k=4;x=O;SET;k=2;c=1;e=A;d=1;COMMON;id=unmodified_vs_ordinals-to-adjectives-eAd1;corpus-portions=quarters">unmodified_vs_ordinals-to-adjectives-eAd1</a><br>
+            🎬 <a href="enqueue:unmodified_vs_ordinals-to-adjectives-eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_ordinals-to-adjectives-eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_ordinals-to-adjectives-eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_ordinals-to-adjectives-eAd1/20161129-123323/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_ordinals-to-adjectives-eAd1">komentář</a></td>
+    </tr><!-- id=unmodified_vs_ordinals-to-adjectives-eAd1 -->
+    <tr id="strucne-unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified-ctx-5;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=ordinals-to-adjectives-eAd1;MATCH;k=4;x=O;SET;k=2;e=A;d=1;COMMON;id=unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1;corpus-portions=quarters">unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5_vs_ordinals-to-adjectives-eAd1 -->
+    <tr id="strucne-lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=ordinals-to-adjectives-eAd1;MATCH;k=4;x=O;SET;k=2;e=A;d=1;COMMON;id=lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1;corpus-portions=quarters">lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1/20161129-155754/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5_vs_ordinals-to-adjectives-eAd1 -->
+    <tr id="strucne-unmodified-ctx-5_vs_by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified-ctx-5;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=unmodified-ctx-5_vs_by;corpus-portions=quarters">unmodified-ctx-5_vs_by</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5_vs_by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5_vs_by">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5_vs_by">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5_vs_by -->
+    <tr id="strucne-lexicon-ctx-5_vs_by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=lexicon-ctx-5_vs_by;corpus-portions=quarters">lexicon-ctx-5_vs_by</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5_vs_by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5_vs_by/20161129-161502/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5_vs_by">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5_vs_by -->
+    <tr id="strucne-unmodified-ctx-5_vs_rftagger-try-lowercase">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified-ctx-5;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;COMMON;id=unmodified-ctx-5_vs_rftagger-try-lowercase;corpus-portions=quarters">unmodified-ctx-5_vs_rftagger-try-lowercase</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_rftagger-try-lowercase.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5_vs_rftagger-try-lowercase.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5_vs_rftagger-try-lowercase/20161202-125910/compared_parts.html">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5_vs_rftagger-try-lowercase/20161202-001444/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5_vs_rftagger-try-lowercase">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5_vs_rftagger-try-lowercase -->
+    <tr id="strucne-lexicon-ctx-5_vs_rftagger-try-lowercase">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-try-lowercase=yes;COMMON;id=lexicon-ctx-5_vs_rftagger-try-lowercase;corpus-portions=quarters">lexicon-ctx-5_vs_rftagger-try-lowercase</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_rftagger-try-lowercase.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_rftagger-try-lowercase.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5_vs_rftagger-try-lowercase">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5_vs_rftagger-try-lowercase/20161202-162620/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5_vs_rftagger-try-lowercase">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5_vs_rftagger-try-lowercase -->
+    <tr>
+        <th colspan="3">chyby v čísle</th>
+    </tr>
+    <tr id="strucne-unmodified-ctx-5-lowercase_vs_by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=unmodified-ctx-5-lowercase_vs_by;corpus-portions=quarters">unmodified-ctx-5-lowercase_vs_by</a><br>
+            🎬 <a href="enqueue:unmodified-ctx-5-lowercase_vs_by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified-ctx-5-lowercase_vs_by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified-ctx-5-lowercase_vs_by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified-ctx-5-lowercase_vs_by">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified-ctx-5-lowercase_vs_by">komentář</a></td>
+    </tr><!-- id=unmodified-ctx-5-lowercase_vs_by -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=lexicon-ctx-5-lowercase_vs_by;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_by</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_by/20161203-122943/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_by">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_by -->
+    <tr>
+        <th colspan="3">adjektiva (přestože jde vlastně v případě participií o starou jmennou flexi!)</th>
+    </tr>
+    <tr id="strucne-lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives-eAd1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;COMMON;id=lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1;corpus-portions=quarters">lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1/20161129-192222/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5_vs_passive-participles-to-adjectives-eAd1 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives-eAd1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;COMMON;id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1/20161204-184818/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-eAd1 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives;MATCH;k=5;m=N;SET;k=2;e=A;DEL;a;m;COMMON;id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives/20161204-195110/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives-d1;MATCH;k=5;m=N;SET;k=2;e=A;d=1;DEL;a;m;COMMON;id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-d1 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives-c1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;DEL;a;m;COMMON;id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;COMMON;id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1/20161204-200730/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_passive-participles-to-adjectives-c1d1 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_full-stop">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;COMMON;id=lexicon-ctx-5-lowercase_vs_full-stop;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_full-stop</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_full-stop">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_full-stop/20161205-025116/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_full-stop">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_full-stop -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_hyphen">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=hyphen;MATCH;word=-;k=\?;SET;tag=kIx~;COMMON;id=lexicon-ctx-5-lowercase_vs_hyphen;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_hyphen</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_hyphen.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_hyphen.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_hyphen">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_hyphen/20161205-030633/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_hyphen">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_hyphen -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_k9-k6">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=k9-k6;MATCH;lc=a to|až|bohužel|co|hlavně|jak|jasně|jen|jenom|ještě|jistě|již|mimo jiné|mimochodem|možná|nakonec|opravdu|pak|potom|prostě|právě|především|rovněž|spíš|tak|taky|také|teprve|tu|též|třeba|už|vlastně|většinou|zrovna|zvláště|zvlášť;k=9;SET;k=6;e=A;d=1;COMMON;id=lexicon-ctx-5-lowercase_vs_k9-k6;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_k9-k6</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_k9-k6.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_k9-k6.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_k9-k6">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_k9-k6/20161205-032202/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_k9-k6">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_k9-k6 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_dash">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;COMMON;id=lexicon-ctx-5-lowercase_vs_dash;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_dash</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_dash.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_dash.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_dash">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_dash/20161205-064344/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_dash">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_dash -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_conditionals">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=by;MATCH;k=Y;lc=by.*;SET;k=9;z=Y;DEL;n;p;m;FILTER;alias=aby-kdyby;MATCH;k=Y;lc=(a|kdy)by.*;SET;k=8;z=Y;DEL;n;p;m;COMMON;id=lexicon-ctx-5-lowercase_vs_conditionals;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_conditionals</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_conditionals.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_conditionals.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_conditionals">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_conditionals/20161205-043306/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_conditionals">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_conditionals -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_remove-zA">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=remove-zA;MATCH;z=A;DEL;z;COMMON;id=lexicon-ctx-5-lowercase_vs_remove-zA;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_remove-zA</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_remove-zA.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_remove-zA.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_remove-zA">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_remove-zA/20161205-052834/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_remove-zA">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_remove-zA -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_revert-to-kA">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=revert-to-kA;MATCH;z=A;SET;tag=kA;COMMON;id=lexicon-ctx-5-lowercase_vs_revert-to-kA;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_revert-to-kA</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_revert-to-kA.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_revert-to-kA.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_revert-to-kA">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_revert-to-kA/20161205-054406/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_revert-to-kA">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_revert-to-kA -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_k6-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;rftagger-context-length=5;rftagger-try-lowercase=yes;TRAINING_TESTING;FILTER;alias=k6-k9;MATCH;lc=a to|až|bohužel|co|hlavně|jak|jasně|jen|jenom|ještě|jistě|již|mimo jiné|mimochodem|možná|nakonec|opravdu|pak|potom|prostě|právě|především|rovněž|spíš|tak|taky|také|teprve|tu|též|třeba|už|vlastně|většinou|zrovna|zvláště|zvlášť;k=6;SET;k=9;DEL;e;d;y;t;x;COMMON;id=lexicon-ctx-5-lowercase_vs_k6-k9;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_k6-k9</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_k6-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_k6-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_k6-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_k6-k9/20161205-062846/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_k6-k9">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_k6-k9 -->
+    <tr id="strucne-unmodified_vs_full-stop-dash">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;COMMON;id=unmodified_vs_full-stop-dash;corpus-portions=quarters">unmodified_vs_full-stop-dash</a><br>
+            🎬 <a href="enqueue:unmodified_vs_full-stop-dash.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_full-stop-dash.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_full-stop-dash">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_full-stop-dash">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_full-stop-dash">komentář</a></td>
+    </tr><!-- id=unmodified_vs_full-stop-dash -->
+    <tr id="strucne-unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;COMMON;id=unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1;corpus-portions=quarters">unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1</a><br>
+            🎬 <a href="enqueue:unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">komentář</a></td>
+    </tr><!-- id=unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1 -->
+    <tr id="strucne-unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=unmodified;EVALUATE;bootstrap=no;rftagger-context-length=5;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by;corpus-portions=quarters">unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by</a><br>
+            🎬 <a href="enqueue:unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">Aurora</a></td>
+        <td>❓ <a href="text.html#unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">komentář</a></td>
+    </tr><!-- id=unmodified_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_full-stop-dash">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;COMMON;id=lexicon-ctx-5-lowercase_vs_full-stop-dash;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_full-stop-dash</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_full-stop-dash">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_full-stop-dash">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_full-stop-dash">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_full-stop-dash -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;COMMON;id=lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;COMMON;id=lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=full-stop;MATCH;word=\.;k=\?;SET;tag=kIx.;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;FILTER;alias=k9-k6;MATCH;lc=a to|až|bohužel|co|hlavně|jak|jasně|jen|jenom|ještě|jistě|již|mimo jiné|mimochodem|možná|nakonec|opravdu|pak|potom|prostě|právě|především|rovněž|spíš|tak|taky|také|teprve|tu|též|třeba|už|vlastně|většinou|zrovna|zvláště|zvlášť;k=9;SET;k=6;e=A;d=1;COMMON;id=lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6/20161205-074424/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_full-stop-dash-passive-participles-to-adjectives-c1d1-by-k9-k6 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;FILTER;alias=k9-k6;MATCH;lc=a to|až|bohužel|co|hlavně|jak|jasně|jen|jenom|ještě|jistě|již|mimo jiné|mimochodem|možná|nakonec|opravdu|pak|potom|prostě|právě|především|rovněž|spíš|tak|taky|také|teprve|tu|též|třeba|už|vlastně|většinou|zrovna|zvláště|zvlášť;k=9;SET;k=6;e=A;d=1;COMMON;id=lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6/20161205-100135/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k9-k6 -->
+    <tr id="strucne-lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;external=lexicon-ctx-5-lowercase;EVALUATE;bootstrap=no;rftagger-context-length=5;rftagger-try-lowercase=yes;rftagger-lexicon=/home/xsvobo15/tagsetbench/rftagger-external-lexicon-majka.vert;TRAINING_TESTING;FILTER;alias=dash;MATCH;word=-;k=\?;SET;tag=kIx~;FILTER;alias=passive-participles-to-adjectives-c1d1;MATCH;k=5;m=N;SET;k=2;e=A;c=1;d=1;DEL;a;m;FILTER;alias=by;MATCH;lc=by|aby|kdyby;DEL;n;FILTER;alias=k6-k9;MATCH;lc=a to|až|bohužel|co|hlavně|jak|jasně|jen|jenom|ještě|jistě|již|mimo jiné|mimochodem|možná|nakonec|opravdu|pak|potom|prostě|právě|především|rovněž|spíš|tak|taky|také|teprve|tu|též|třeba|už|vlastně|většinou|zrovna|zvláště|zvlášť;k=6;SET;tag=k9;COMMON;id=lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9;corpus-portions=quarters">lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9</a><br>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9/20161205-122001/compared_parts.html">Aurora</a></td>
+        <td>❓ <a href="text.html#lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9">komentář</a></td>
+    </tr><!-- id=lexicon-ctx-5-lowercase_vs_dash-passive-participles-to-adjectives-c1d1-by-k6-k9 -->
+</table><!-- id="tabulka-mereni" -->
+
+<h2>Asi spíš jednorázový věci…</h2>
+<table>
+    <tr>
+        <th colspan="2">vygenerovaný context-length 2 až 30</th>
+        <td>z toho vyšla ta ✅ pětka<br>a 🚫 první čtvrtina místo čtvrtý</td>
+    </tr>
+    <tr id="strucne-context-length-2">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=2;COMMON;id=context-length-2">context-length-2</a><br>
+            🎬 <a href="enqueue:context-length-2.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-2.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-2">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-2/20161120-235402/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-2">komentář</a></td>
+    </tr><!-- id=context-length-2 -->
+    <tr id="strucne-context-length-3">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=3;COMMON;id=context-length-3">context-length-3</a><br>
+            🎬 <a href="enqueue:context-length-3.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-3.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-3">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-3/20161121-000617/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-3">komentář</a></td>
+    </tr><!-- id=context-length-3 -->
+    <tr id="strucne-context-length-4">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=4;COMMON;id=context-length-4">context-length-4</a><br>
+            🎬 <a href="enqueue:context-length-4.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-4.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-4">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-4/20161121-001933/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-4">komentář</a></td>
+    </tr><!-- id=context-length-4 -->
+    <tr id="strucne-context-length-5">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=5;COMMON;id=context-length-5">context-length-5</a><br>
+            🎬 <a href="enqueue:context-length-5.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-5.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-5">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-5/20161121-003540/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-5">komentář</a></td>
+    </tr><!-- id=context-length-5 -->
+    <tr id="strucne-context-length-6">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=6;COMMON;id=context-length-6">context-length-6</a><br>
+            🎬 <a href="enqueue:context-length-6.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-6.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-6">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-6/20161121-005244/0-50,75-100_50-75/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-6">komentář</a></td>
+    </tr><!-- id=context-length-6 -->
+    <tr id="strucne-context-length-7">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=7;COMMON;id=context-length-7">context-length-7</a><br>
+            🎬 <a href="enqueue:context-length-7.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-7.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-7">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-7/20161121-011024/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-7">komentář</a></td>
+    </tr><!-- id=context-length-7 -->
+    <tr id="strucne-context-length-8">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=8;COMMON;id=context-length-8">context-length-8</a><br>
+            🎬 <a href="enqueue:context-length-8.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-8.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-8">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-8/20161121-012839/0-50,75-100_50-75/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-8">komentář</a></td>
+    </tr><!-- id=context-length-8 -->
+    <tr id="strucne-context-length-9">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=9;COMMON;id=context-length-9">context-length-9</a><br>
+            🎬 <a href="enqueue:context-length-9.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-9.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-9">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-9/20161121-014620/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-9">komentář</a></td>
+    </tr><!-- id=context-length-9 -->
+    <tr id="strucne-context-length-10">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=10;COMMON;id=context-length-10">context-length-10</a><br>
+            🎬 <a href="enqueue:context-length-10.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-10.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-10">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-10/20161121-020613/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-10">komentář</a></td>
+    </tr><!-- id=context-length-10 -->
+    <tr id="strucne-context-length-11">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=11;COMMON;id=context-length-11">context-length-11</a><br>
+            🎬 <a href="enqueue:context-length-11.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-11.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-11">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-11/20161121-022827/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-11">komentář</a></td>
+    </tr><!-- id=context-length-11 -->
+    <tr id="strucne-context-length-12">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=12;COMMON;id=context-length-12">context-length-12</a><br>
+            🎬 <a href="enqueue:context-length-12.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-12.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-12">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-12/20161121-024856/0-75_75-100/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-12">komentář</a></td>
+    </tr><!-- id=context-length-12 -->
+    <tr id="strucne-context-length-13">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=13;COMMON;id=context-length-13">context-length-13</a><br>
+            🎬 <a href="enqueue:context-length-13.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-13.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-13">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-13/20161121-045810/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-13">komentář</a></td>
+    </tr><!-- id=context-length-13 -->
+    <tr id="strucne-context-length-14">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=14;COMMON;id=context-length-14">context-length-14</a><br>
+            🎬 <a href="enqueue:context-length-14.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-14.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-14">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-14/20161121-051109/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-14">komentář</a></td>
+    </tr><!-- id=context-length-14 -->
+    <tr id="strucne-context-length-15">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=15;COMMON;id=context-length-15">context-length-15</a><br>
+            🎬 <a href="enqueue:context-length-15.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-15.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-15">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-15/20161121-052438/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-15">komentář</a></td>
+    </tr><!-- id=context-length-15 -->
+    <tr id="strucne-context-length-16">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=16;COMMON;id=context-length-16">context-length-16</a><br>
+            🎬 <a href="enqueue:context-length-16.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-16.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-16">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-16/20161121-053845/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-16">komentář</a></td>
+    </tr><!-- id=context-length-16 -->
+    <tr id="strucne-context-length-17">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=17;COMMON;id=context-length-17">context-length-17</a><br>
+            🎬 <a href="enqueue:context-length-17.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-17.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-17">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-17/20161121-055324/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-17">komentář</a></td>
+    </tr><!-- id=context-length-17 -->
+    <tr id="strucne-context-length-18">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=18;COMMON;id=context-length-18">context-length-18</a><br>
+            🎬 <a href="enqueue:context-length-18.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-18.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-18">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-18/20161121-060839/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-18">komentář</a></td>
+    </tr><!-- id=context-length-18 -->
+    <tr id="strucne-context-length-19">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=19;COMMON;id=context-length-19">context-length-19</a><br>
+            🎬 <a href="enqueue:context-length-19.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-19.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-19">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-19/20161121-062436/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-19">komentář</a></td>
+    </tr><!-- id=context-length-19 -->
+    <tr id="strucne-context-length-20">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=20;COMMON;id=context-length-20">context-length-20</a><br>
+            🎬 <a href="enqueue:context-length-20.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-20.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-20">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-20/20161121-064110/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-20">komentář</a></td>
+    </tr><!-- id=context-length-20 -->
+    <tr id="strucne-context-length-21">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=21;COMMON;id=context-length-21">context-length-21</a><br>
+            🎬 <a href="enqueue:context-length-21.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-21.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-21">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-21/20161121-065830/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-21">komentář</a></td>
+    </tr><!-- id=context-length-21 -->
+    <tr id="strucne-context-length-22">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=22;COMMON;id=context-length-22">context-length-22</a><br>
+            🎬 <a href="enqueue:context-length-22.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-22.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-22">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-22/20161121-071638/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-22">komentář</a></td>
+    </tr><!-- id=context-length-22 -->
+    <tr id="strucne-context-length-23">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=23;COMMON;id=context-length-23">context-length-23</a><br>
+            🎬 <a href="enqueue:context-length-23.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-23.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-23">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-23/20161121-073526/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-23">komentář</a></td>
+    </tr><!-- id=context-length-23 -->
+    <tr id="strucne-context-length-24">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=24;COMMON;id=context-length-24">context-length-24</a><br>
+            🎬 <a href="enqueue:context-length-24.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-24.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-24">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-24/20161121-075511/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-24">komentář</a></td>
+    </tr><!-- id=context-length-24 -->
+    <tr id="strucne-context-length-25">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=25;COMMON;id=context-length-25">context-length-25</a><br>
+            🎬 <a href="enqueue:context-length-25.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-25.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-25">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-25/20161121-081546/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-25">komentář</a></td>
+    </tr><!-- id=context-length-25 -->
+    <tr id="strucne-context-length-26">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=26;COMMON;id=context-length-26">context-length-26</a><br>
+            🎬 <a href="enqueue:context-length-26.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-26.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-26">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-26/20161121-083719/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-26">komentář</a></td>
+    </tr><!-- id=context-length-26 -->
+    <tr id="strucne-context-length-27">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=27;COMMON;id=context-length-27">context-length-27</a><br>
+            🎬 <a href="enqueue:context-length-27.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-27.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-27">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-27/20161121-090007/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-27">komentář</a></td>
+    </tr><!-- id=context-length-27 -->
+    <tr id="strucne-context-length-28">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=28;COMMON;id=context-length-28">context-length-28</a><br>
+            🎬 <a href="enqueue:context-length-28.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-28.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-28">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-28/20161121-092443/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-28">komentář</a></td>
+    </tr><!-- id=context-length-28 -->
+    <tr id="strucne-context-length-29">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=29;COMMON;id=context-length-29">context-length-29</a><br>
+            🎬 <a href="enqueue:context-length-29.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-29.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-29">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-29/20161121-094930/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-29">komentář</a></td>
+    </tr><!-- id=context-length-29 -->
+    <tr id="strucne-context-length-30">
+        <td>🏗 <a href="tagsetbench:run?EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=1;EVALUATE;TRAINING_TESTING;bootstrap=no;rftagger-context-length=30;COMMON;id=context-length-30">context-length-30</a><br>
+            🎬 <a href="enqueue:context-length-30.sh?mgr">lokálně</a>
+            🎬 <a href="enqueue:context-length-30.sh?aurora">na Auroře</a></td>
+        <td>📏 <a href="/measurements/context-length-30">tady</a><br>
+            📏 <a href="http://nlp.fi.muni.cz/~xsvobo15/tagsetbench/context-length-30/20161121-101651/25-100_0-25/?C=M;O=D">Aurora</a></td>
+        <td>❓ <a href="text.html#context-length-30">komentář</a></td>
+    </tr><!-- id=context-length-30 -->
+</table>
+
+</div>
+</body>
+</html>
